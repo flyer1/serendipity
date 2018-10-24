@@ -1,15 +1,33 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Website</title>
+  <!-- Use various meta tags to never cache this file in order to push out new versions to browsers. -->
+  <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Tell IE11 to ignore any compatibility view settings -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Serendipity</title>
   <base href="/">
+
+  <!-- Old browser detection -->
+  <!-- <script src="/assets/non-supported-browser/bowser.min.js"></script>
+  <script src="/assets/non-supported-browser/browser-compatibility-check.js?v=2"></script> -->
+
   <!-- TODO: Reference the local assets -->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
 </html>

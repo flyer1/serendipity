@@ -53,8 +53,20 @@ nav {
   flex-direction: row;
   justify-content: center;
   padding-top: 30px;
+  flex-wrap: wrap;
 
-  .blog-posts {}
+  .blog-posts {
+    margin-right: 20px;
+  }
 
   .side-bar {}
+}
+
+//////////////// MEDIA
+@media(max-width: 768px) {
+  .main {
+    .blog-posts {
+      width: 100%;
+    }
+  }
 }

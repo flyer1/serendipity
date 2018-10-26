@@ -1,31 +1,22 @@
-import { Component, OnInit, ElementRef, AfterViewInit, Input } from '@angular/core';
-import { TwitterService } from 'src/app/core/network/twitter.service';
+import { Component, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+
+import { TwitterService } from 'src/app/core/social/twitter.service';
+import { ComponentBase } from 'src/app/core/component/component-base';
 
 @Component({
-    selector: 'app-twitter',
-    templateUrl: 'twitter.component.html'
+  selector: 'app-twitter',
+  templateUrl: 'twitter.component.html',
+  styleUrls: ['twitter.component.scss']
 })
 
-export class TwitterComponent implements AfterViewInit {
+export class TwitterComponent extends ComponentBase implements AfterViewInit {
 
-    @Input() tweetId = '617749885933232128';
+  constructor(private el: ElementRef, private twitterService: TwitterService) {
+    super();
+  }
 
-    constructor(private el: ElementRef, private twitterService: TwitterService) { }
-
-    ngAfterViewInit() {
-        this.twitterService.loadScript().subscribe(twttr => this.onLoaded());
-    }
-
-    onLoaded() {
-        const nativeElement = this.el.nativeElement;
-
-        window['twttr'].widgets.createTweet(this.tweetId, nativeElement, {})
-            .then(
-                function success(embed) {
-                    console.log('Created tweet widget: ', embed);
-                }).catch(
-                    function creationError(message) {
-                        console.log('Could not create widget: ', message);
-                    });
-    }
+  ngAfterViewInit() {
+    this.twitterService.loadScript().pipe(takeUntil(this.destroy$)).subscribe();
+  }
 }

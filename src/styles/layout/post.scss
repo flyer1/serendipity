@@ -1,0 +1,27 @@
+.post {
+  max-width: 400px;
+  padding: 30px 30px;
+  border: 1px solid #ccc;
+  box-shadow: -13px 8px 10px rgba(175, 175, 175, 0.3);
+  border-radius: 7px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 20px;
+
+
+  .heading {
+    h2 {
+      margin: 0 0 10px 0;
+    }
+
+    .sub-heading {
+      color: #999;
+    }
+  }
+
+  .body {
+    .summary {}
+  }
+
+  .actions {}
+}

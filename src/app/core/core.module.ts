@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
     imports: [],
-    exports: [],
+    exports: [
+    ],
     declarations: [],
     providers: [],
 })

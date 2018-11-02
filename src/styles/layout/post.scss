@@ -1,3 +1,5 @@
+@import '../variables/variables';
+
 .post {
   max-width: 400px;
   padding: 30px 30px;
@@ -7,24 +9,56 @@
   font-size: 15px;
   line-height: 20px;
   border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: background-color .3s ease;
 
   .heading {
     h2 {
+      font-family: $secondaryFont;
       margin: 0 0 10px 0;
       text-align: center;
+      font-weight: 500;
+      font-size: 27px;
+      line-height: 0.95em;
     }
 
     .sub-heading {
+      display: flex;
+      justify-content: center;
       color: #999;
       text-align: center;
+
+      .when {
+        margin-right: 30px;
+      }
+
+      .share {
+        cursor: pointer;
+        font-size: 18px;
+
+        a {
+          margin-left: 15px;
+
+          &:hover {
+            color: #55abed;
+          }
+        }
+      }
     }
   }
 
   .body {
-    .summary {}
+    .summary {
+      line-height: 1.45em;
+    }
   }
 
   .actions {
     text-align: center;
+  }
+
+  &:hover {
+    background: #f6f6f6;
   }
 }

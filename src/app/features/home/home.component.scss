@@ -1,3 +1,5 @@
+@import "../../../styles/variables/variables";
+
 .banner {
   background-image: url('../../../assets/images/banner.jpg');
   background-size: cover;
@@ -14,6 +16,7 @@
   .title-section {
     background: rgba(255, 255, 255, 0.36);
     padding-bottom: 15px;
+    box-shadow: 0 0 20px 0px #3c699f;
 
     h1 {
       font-size: 60px;
@@ -27,13 +30,14 @@ nav {
   background: #f2ecf0;
   display: flex;
   justify-content: center;
+  font-family: $secondaryFont;
 
   .nav-item {
     font-weight: 800;
     margin-right: 10px;
     font-weight: 600;
     margin-right: 20px;
-    padding: 10px 20px;
+    padding: 10px 20px 8px 20px;
     font-size: 17px;
     text-transform: uppercase;
     cursor: pointer;

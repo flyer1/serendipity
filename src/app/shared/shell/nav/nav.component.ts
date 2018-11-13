@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { RouterService } from '../../../core/routing/router.service';
-import { MobileNavComponent } from './mobile-nav.component';
+import { RoutingService } from '../../../core/routing/routing.service';
 import { BaseNavComponent } from './base-nav.component';
 
 @Component({
@@ -18,12 +17,12 @@ export class NavComponent extends BaseNavComponent implements OnInit {
 
     pageTitle$: Observable<string>;
 
-    constructor(routerService: RouterService) {
-        super(routerService);
+    constructor(routingService: RoutingService) {
+        super(routingService);
     }
 
     ngOnInit() {
-        this.pageTitle$ = this.appRouterService.pageTitle$;
+        this.pageTitle$ = this.routingService.pageTitle$;
     }
 
     toggleMobileMenu() {

@@ -7,7 +7,7 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class RouterService {
+export class RoutingService {
 
     private routeDataSubject$ = new ReplaySubject<any>(1);
     private pageTitleSubject$ = new ReplaySubject<string>(1);

@@ -1,7 +1,7 @@
 import { trigger, style, transition, animate } from '@angular/animations';
 
-export const mobileNavAnimation =
-    trigger('mobileNavAnimation', [
+export const toggleMobileNavAnimation =
+    trigger('toggleMobileNavAnimation', [
         transition(':enter', [
             style({ height: 0 }),
             animate('300ms ease-in-out', style({ height: '*' }))

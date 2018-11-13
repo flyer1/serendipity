@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { RouterService } from '../../../core/routing/router.service';
+import { RoutingService } from '../../../core/routing/routing.service';
 import { BaseNavComponent } from './base-nav.component';
-import { mobileNavAnimation } from './nav.animation';
+import { toggleMobileNavAnimation } from './nav.animation';
 
 @Component({
     templateUrl: './mobile-nav.component.html',
-    animations: [mobileNavAnimation],
+    animations: [toggleMobileNavAnimation],
     styleUrls: [ './mobile-nav.component.scss' ],
     encapsulation: ViewEncapsulation.None
 })
@@ -15,11 +15,11 @@ export class MobileNavComponent extends BaseNavComponent {
     isReady = false;
     isMobileMenuCollapsed = true;
 
-    constructor(routerService: RouterService) {
-        super(routerService);
+    constructor(routingService: RoutingService) {
+        super(routingService);
     }
 
-    navigate(url) {
-        super.navigate(url);
+    navigate(event: Event, url: string) {
+        super.navigate(event, url);
     }
 }

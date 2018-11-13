@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './shell/footer/footer.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TwitterComponent } from './side-bar/twitter/twitter.component';
 import { NavComponent } from './shell/nav/nav.component';

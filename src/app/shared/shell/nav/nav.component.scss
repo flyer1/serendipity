@@ -1,0 +1,53 @@
+@import "../../../../styles/variables/variables.scss";
+
+.banner {
+  background-image: url('../../../../assets/images/banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  background-position: top;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  flex-direction: column;
+  text-align: center;
+
+  .title-section {
+    background: rgba(255, 255, 255, 0.36);
+    padding-bottom: 15px;
+    box-shadow: 0 0 20px 0px #3c699f;
+
+    h1 {
+      font-size: 60px;
+      margin: 0;
+    }
+
+  }
+}
+
+nav {
+  background: #f2ecf0;
+  display: flex;
+  justify-content: center;
+  font-family: $secondaryFont;
+
+  .nav-item {
+    font-weight: 800;
+    margin-right: 10px;
+    font-weight: 600;
+    margin-right: 20px;
+    padding: 10px 20px 8px 20px;
+    font-size: 17px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.is-active {
+      background: hsla(324, 15%, 84%, 1);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

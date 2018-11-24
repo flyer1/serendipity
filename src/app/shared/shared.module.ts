@@ -19,6 +19,14 @@ import { NavComponent } from './shell/nav/nav.component';
         NavComponent,
         FooterComponent
     ],
-    providers: [],
+    providers: [
+        {provide: 'window', useFactory: windowFactory}
+    ],
 })
 export class SharedModule { }
+
+
+///////////////////////////////
+export function windowFactory() {
+    return window;
+}

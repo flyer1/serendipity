@@ -1,28 +1,35 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, Inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TwitterService {
+
+    // PROPERTIES ////////////
+    public get twitterApi() {
+        return this.window[this.TWITTER_WINDOW_PROPERTY];
+    }
+
+    // MEMBER VARS ////////////
     readonly TWITTER_SCRIPT_ID = 'twitter-wjs';
     readonly TWITTER_WIDGET_URL = 'https://platform.twitter.com/widgets.js';
+    readonly TWITTER_WINDOW_PROPERTY = 'twttr';
 
-    loadScript(): Observable<any> {
-        const that = this;
+    twitterReadySubject = new BehaviorSubject(false);
+    twitterReady$ = this.twitterReadySubject.asObservable();
 
-        return Observable.create(observer => {
-            that.startScriptLoad();
+    // IMPLEMENTATION //////////
+    constructor(@Inject('window') private window: Window) {}
 
-            window['twttr'].ready(
-                function onLoadTwitterScript(twttr) {
-                    observer.next(twttr);
-                    observer.complete();
-                });
+    initialize() {
+        this.startScriptLoad();
+        this.twitterApi.ready(f => {
+            this.twitterReadySubject.next(true);
         });
     }
 
     // Load the script into the DOM
     private startScriptLoad() {
-        window['twttr'] = (function (doc, script, id, url) {
+        window[this.TWITTER_WINDOW_PROPERTY] = (function (doc, script, id, url) {
             let scriptEl: HTMLScriptElement;
             const fjs = doc.getElementsByTagName(script)[0];
             const twitter = window['twttr'] || {};

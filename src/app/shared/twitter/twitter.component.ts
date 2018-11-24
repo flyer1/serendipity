@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
 import { TwitterService } from 'src/app/core/social/twitter.service';
@@ -12,11 +12,17 @@ import { ComponentBase } from 'src/app/core/component/component-base';
 
 export class TwitterComponent extends ComponentBase implements AfterViewInit {
 
-  constructor(private el: ElementRef, private twitterService: TwitterService) {
+  constructor( private twitterService: TwitterService) {
     super();
   }
 
   ngAfterViewInit() {
-    this.twitterService.loadScript().pipe(takeUntil(this.destroy$)).subscribe();
+    this.twitterService.twitterReady$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isReady => {
+        if (isReady) {
+          this.twitterService.twitterApi.widgets.load();
+        }
+      });
   }
 }

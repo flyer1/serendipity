@@ -1,0 +1,11 @@
+.photo-card {
+  height: 320px;
+  margin-bottom: 15px;
+
+  .photo {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

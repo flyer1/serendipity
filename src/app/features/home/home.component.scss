@@ -9,17 +9,18 @@
   flex-wrap: wrap;
   background: #f6f6f6;
 
-  .blog-posts {
+  .blog-posts-layout {
     margin-right: 20px;
+    width: 50%;
   }
 
-  .side-bar {}
+  .side-bar-layout {}
 }
 
 //////////////// MEDIA
 @media(max-width: 768px) {
   .main {
-    .blog-posts {
+    .blog-posts-layout {
       width: 100%;
     }
   }

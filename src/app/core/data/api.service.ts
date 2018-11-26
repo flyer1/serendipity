@@ -38,9 +38,12 @@ export class ApiService {
     };
 
     return this.http.request(method, url, options)
-      .pipe(
-        catchError(this.handleError.bind(this))
-      );
+      .pipe(catchError(this.handleError.bind(this)));
+  }
+
+  getJson(path): Observable<any> {
+    return this.http.get(path)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   private handleError(response: HttpErrorResponse): Observable<never> {

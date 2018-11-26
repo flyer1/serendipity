@@ -5,7 +5,6 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { TwitterComponent } from './twitter/twitter.component';
 import { NavComponent } from './shell/nav/nav.component';
 import { PhotoCardComponent } from './photo-card/photo-card.component';
-import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 
 @NgModule({
     imports: [
@@ -16,16 +15,14 @@ import { BlogPostsComponent } from './blog-posts/blog-posts.component';
         SideBarComponent,
         NavComponent,
         FooterComponent,
-        PhotoCardComponent,
-        BlogPostsComponent
+        PhotoCardComponent
     ],
     exports: [
         TwitterComponent,
         SideBarComponent,
         NavComponent,
         FooterComponent,
-        PhotoCardComponent,
-        BlogPostsComponent
+        PhotoCardComponent
     ],
     providers: [
         { provide: 'window', useFactory: windowFactory }

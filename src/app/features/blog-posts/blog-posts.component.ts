@@ -8,9 +8,11 @@ import { BlogPostService } from './services/blog-posts.service';
 })
 export class BlogPostsComponent implements OnInit {
 
-  constructor(private blogPostService: BlogPostService) {}
+  constructor(private blogPostService: BlogPostService) { }
 
   ngOnInit() {
-    this.blogPostService.get().subscribe(response => console.log('got this', response));
+    this.blogPostService.get().subscribe(response => {
+      console.log('got this', response);
+    });
   }
 }

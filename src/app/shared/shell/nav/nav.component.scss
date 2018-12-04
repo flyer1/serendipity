@@ -1,5 +1,6 @@
 @import "../../../../styles/variables/variables.scss";
 
+// TODO: Move this.
 .banner {
   background-image: url('../../../../assets/images/banner.jpg');
   background-size: cover;
@@ -31,22 +32,28 @@ nav {
   justify-content: center;
   font-family: $secondaryFont;
 
-  .nav-item {
-    font-weight: 800;
-    margin-right: 10px;
-    font-weight: 600;
-    margin-right: 20px;
-    padding: 10px 20px 8px 20px;
-    font-size: 17px;
-    text-transform: uppercase;
-    cursor: pointer;
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
 
-    &.is-active {
-      background: hsla(324, 15%, 84%, 1);
-    }
+    .nav-item {
+      font-weight: 800;
+      margin-right: 10px;
+      font-weight: 600;
+      margin-right: 20px;
+      padding: 10px 20px 8px 20px;
+      font-size: 17px;
+      text-transform: uppercase;
+      cursor: pointer;
 
-    &:last-child {
-      margin-right: 0;
+      &.is-active {
+        background: hsla(324, 15%, 84%, 1);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

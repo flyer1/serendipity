@@ -1,18 +1,20 @@
-<div class="banner">
+<header class="banner">
     <div class="title-section">
         <h1>Serendipity</h1>
         <div class="sub-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
     </div>
-</div>
+</header>
 
 <nav>
-    <div class="nav-item is-active">
-        <a [href]="" (click)="navigate($event, 'home')">Home</a>
-    </div>
-    <div class="nav-item">
-        <a [href]="about" (click)="navigate($event, 'about')">About</a>
-    </div>
-    <div class="nav-item">
-        <a [href]="contact" (click)="navigate($event, 'contact')">Contact</a>
-    </div>
+    <ul>
+        <li class="nav-item is-active">
+            <a [href]="" (click)="navigate($event, 'home')">Home</a>
+        </li>
+        <li class="nav-item">
+            <a [href]="about" (click)="navigate($event, 'about')">About</a>
+        </li>
+        <li class="nav-item">
+            <a [href]="contact" (click)="navigate($event, 'contact')">Contact</a>
+        </li>
+    </ul>
 </nav>

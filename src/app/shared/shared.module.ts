@@ -5,6 +5,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { TwitterComponent } from './twitter/twitter.component';
 import { NavComponent } from './shell/nav/nav.component';
 import { PhotoCardComponent } from './photo-card/photo-card.component';
+import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 
 @NgModule({
     imports: [
@@ -15,14 +16,16 @@ import { PhotoCardComponent } from './photo-card/photo-card.component';
         SideBarComponent,
         NavComponent,
         FooterComponent,
-        PhotoCardComponent
+        PhotoCardComponent,
+        RecentPostsComponent
     ],
     exports: [
         TwitterComponent,
         SideBarComponent,
         NavComponent,
         FooterComponent,
-        PhotoCardComponent
+        PhotoCardComponent,
+        RecentPostsComponent
     ],
     providers: [
         { provide: 'window', useFactory: windowFactory }

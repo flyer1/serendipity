@@ -1,4 +1,33 @@
-
 .side-bar {
-    
+  .side-bar-card {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+
+    .header {
+      overflow: hidden;
+      position: relative;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 400;
+      }
+
+      // &:after {
+      //   content: "";
+      //   position: absolute;
+      //   background: #ddd;
+      //   height: 1px;
+      //   margin-left: 15px;
+      //   top: 50%;
+      //   width: 100%;
+      //   transform: translateY(-50%);
+      // }
+    }
+  }
 }

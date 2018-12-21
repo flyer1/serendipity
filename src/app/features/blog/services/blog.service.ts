@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/core/data/api.service';
 import { BlogPosts } from '../models/blog-posts.model';
 
 @Injectable()
-export class BlogPostService {
+export class BlogService {
   constructor(private apiService: ApiService) { }
 
   get(): Observable<BlogPosts> {

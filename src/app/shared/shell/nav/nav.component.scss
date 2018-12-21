@@ -44,14 +44,18 @@ nav {
     margin: 0;
 
     .nav-item {
-      font-weight: 800;
       margin-right: 10px;
-      font-weight: 600;
       margin-right: 20px;
-      padding: 10px 20px 8px 20px;
-      font-size: 17px;
-      text-transform: uppercase;
-      cursor: pointer;
+
+      a {
+        display: inline-block;
+        padding: 10px 20px 8px 20px;
+        font-weight: 600;
+        font-size: 17px;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
       &.is-active {
         background: hsla(324, 15%, 84%, 1);

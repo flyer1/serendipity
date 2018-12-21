@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home.component';
-import { BlogPostsModule } from '../blog-posts/blog-posts.module';
+import { BlogModule } from '../blog/blog.module';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), CommonModule, SharedModule, BlogPostsModule],
+  imports: [RouterModule.forChild(routes), CommonModule, SharedModule, BlogModule],
   declarations: [HomeComponent],
   providers: []
 })

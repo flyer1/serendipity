@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './shell/footer/footer.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -10,7 +11,8 @@ import { LinkDirective } from './directives/link.directive';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FooterComponent,
@@ -22,6 +24,7 @@ import { LinkDirective } from './directives/link.directive';
     TwitterComponent,
   ],
   exports: [
+    ReactiveFormsModule,
     FooterComponent,
     LinkDirective,
     NavComponent,

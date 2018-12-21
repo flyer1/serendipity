@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { BlogService } from '../services/blog.service';
-import { BlogPosts } from '../models/blog-posts.model';
-import { Router } from '@angular/router';
+import { BlogPost } from '../models/blog-post.model';
 
 @Component({
-  selector: 'app-blog-posts',
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.scss']
 })
 export class BlogPostComponent implements OnInit {
 
-  data: BlogPosts;
+  private id: string;
+  post: BlogPost;
 
-  constructor(private blogService: BlogService, private router: Router) { }
+  constructor(private blogService: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.blogService.get().subscribe(response => {
-      console.log('got this', response);
-      this.data = response;
+    this.id = this.route.snapshot.params['id'];
+    this.blogService.get(this.id).subscribe(blogPost => {
+      this.post = blogPost;
     });
   }
-
-  navigate() {
-    // this.router.navigate(['admin/batch-mgmt', this.selectedBatch.batchNumber]);
-  }
 }
+

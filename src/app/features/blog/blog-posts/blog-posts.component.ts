@@ -15,13 +15,13 @@ export class BlogPostsComponent implements OnInit {
   constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit() {
-    this.blogService.get().subscribe(response => {
+    this.blogService.getAll().subscribe(response => {
       console.log('got this', response);
       this.data = response;
     });
   }
 
   navigate(id: string) {
-    this.router.navigate(['blog/post', id]);
+    this.router.navigate(['blog/posts', id]);
   }
 }

@@ -1,21 +1,23 @@
-<div *ngIf="data" class="blog-posts" role="list">
-    <div *ngFor="let post of data.results" class="post" role="listitem">
-        <div class="heading">
-            <h2>{{post.title}}</h2>
-            <div class="sub-heading">
-                <div class="when"><i class="sd-clock-4"></i>{{post.date}}</div>
-                <div class="share">
-                    <a><i class="sd-facebook-squared"></i></a>
-                    <a><i class="sd-twitter"></i></a>
+<main class="blog-posts">
+    <section class="col-main" aria-label="blog post">
+        <div *ngIf="post" class="blog-post" role="list">
+            <div class="heading">
+                <h2>{{post.title}}</h2>
+                <div class="sub-heading">
+                    <div class="when"><i class="sd-clock-4"></i>{{post.date}}</div>
+                    <div class="share">
+                        <a><i class="sd-facebook-squared"></i></a>
+                        <a><i class="sd-twitter"></i></a>
+                    </div>
                 </div>
             </div>
+            <div class="body">
+                <p class="summary">{{post.content}}</p>
+            </div>
         </div>
-        <div class="body">
-            <p class="summary">{{post.content}}</p>
-        </div>
+    </section>
 
-        <div class="actions">
-            <a href="">Read More</a>
-        </div>
-    </div>
-</div>
+    <aside class="side-bar-layout">
+        <app-side-bar></app-side-bar>
+    </aside>
+</main>

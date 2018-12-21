@@ -21,7 +21,7 @@ export class BlogPostsComponent implements OnInit {
     });
   }
 
-  navigate() {
-    // this.router.navigate(['admin/batch-mgmt', this.selectedBatch.batchNumber]);
+  navigate(id: string) {
+    this.router.navigate(['blog/post', id]);
   }
 }

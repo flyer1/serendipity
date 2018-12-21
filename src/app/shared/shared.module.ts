@@ -6,35 +6,38 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { NavComponent } from './shell/nav/nav.component';
 import { PhotoCardComponent } from './photo-card/photo-card.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
+import { LinkDirective } from './directives/link.directive';
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    declarations: [
-        TwitterComponent,
-        SideBarComponent,
-        NavComponent,
-        FooterComponent,
-        PhotoCardComponent,
-        RecentPostsComponent
-    ],
-    exports: [
-        TwitterComponent,
-        SideBarComponent,
-        NavComponent,
-        FooterComponent,
-        PhotoCardComponent,
-        RecentPostsComponent
-    ],
-    providers: [
-        { provide: 'window', useFactory: windowFactory }
-    ],
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    FooterComponent,
+    LinkDirective,
+    NavComponent,
+    PhotoCardComponent,
+    RecentPostsComponent,
+    SideBarComponent,
+    TwitterComponent,
+  ],
+  exports: [
+    FooterComponent,
+    LinkDirective,
+    NavComponent,
+    PhotoCardComponent,
+    RecentPostsComponent,
+    SideBarComponent,
+    TwitterComponent,
+  ],
+  providers: [
+    { provide: 'window', useFactory: windowFactory }
+  ],
 })
 export class SharedModule { }
 
 
 ///////////////////////////////
 export function windowFactory() {
-    return window;
+  return window;
 }

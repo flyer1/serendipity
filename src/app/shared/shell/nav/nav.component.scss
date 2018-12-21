@@ -57,10 +57,8 @@ nav {
         text-transform: uppercase;
         text-decoration: none;
         cursor: pointer;
-      }
 
-      &.is-active {
-        a {
+        &.is-active {
           border-bottom-color: gray;
         }
       }

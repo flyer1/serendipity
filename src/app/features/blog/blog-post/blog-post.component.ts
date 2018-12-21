@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../services/blog.service';
 import { BlogPost } from '../models/blog-post.model';
 import { RoutingService } from 'src/app/core/routing/routing.service';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 
@@ -15,7 +15,6 @@ import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 })
 export class BlogPostComponent extends ComponentBase implements OnInit {
 
-  private id: string;
   post: BlogPost;
   private form: FormGroup;
 
@@ -24,11 +23,12 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(parms => this.getData(parms.id));
     this.initForm();
+  }
 
-    this.blogService.get(this.id).subscribe(blogPost => {
+  getData(id: string) {
+    this.blogService.get(id).subscribe(blogPost => {
       this.post = blogPost;
     });
   }
@@ -38,7 +38,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
 
     this.form.get('content')
       .valueChanges
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.destroy$), debounceTime(300))
       .subscribe(val => {
         this.post.formattedContent = this.markdown.compile(val);
       });

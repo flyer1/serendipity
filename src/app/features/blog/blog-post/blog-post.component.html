@@ -17,11 +17,11 @@
                 <p [innerHtml]="post.formattedContent"></p>
 
                 <!-- This is a temp section to help toggle the markdown. -->
-                <h2>Here is the raw markdown for this post</h2>
                 <div *ngIf="post.title === 'Demo Post'" class="toggle-raw">
-                  <div [formGroup]="form">
-                    <textarea formControlName="content"></textarea>
-                  </div>
+                    <h2>Here is the raw markdown for this post</h2>
+                    <div [formGroup]="form">
+                        <textarea formControlName="content"></textarea>
+                    </div>
                 </div>
             </div>
         </div>

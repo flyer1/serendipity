@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { Subject, ReplaySubject } from 'rxjs';
+import { Subject, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -11,11 +11,13 @@ export class RoutingService {
 
   private routeDataSubject$ = new ReplaySubject<any>(1);
   private pageTitleSubject$ = new ReplaySubject<string>(1);
+  private activeModuleSubject$ = new ReplaySubject<string>();
   private pageTitleSuffix: string;
   private destroy$ = new Subject();
 
   pageTitle$ = this.pageTitleSubject$.asObservable();
   routeData$ = this.routeDataSubject$.asObservable();
+  activeModule$ = this.activeModuleSubject$.asObservable();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private location: Location, private title: Title, private meta: Meta) { }
 
@@ -51,7 +53,7 @@ export class RoutingService {
     return this.router.navigateByUrl(url, { replaceUrl: replaceUrl });
   }
 
-  initialize(pageTitleSuffix: string) {
+  initialize(pageTitleSuffix: string = 'Serendipity') {
     this.pageTitleSuffix = pageTitleSuffix;
 
     this.router.events.pipe(
@@ -71,6 +73,11 @@ export class RoutingService {
           description = route.snapshot.routeConfig.data['description'];
         }
       } while (route.children.length > 0);
+
+      const frags = event.url.split('/');
+      if (frags.length >= 1) {
+        this.activeModuleSubject$.next(frags[1].toLowerCase());
+      }
 
       this.setTitle(title);
       this.setDescription(description);

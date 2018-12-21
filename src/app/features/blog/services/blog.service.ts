@@ -8,7 +8,7 @@ import { compare } from 'src/app/core/helpers/common-helpers';
 import { BlogPost } from '../models/blog-post.model';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BlogService {
   constructor(private apiService: ApiService, private markdown: MarkdownService) { }
 

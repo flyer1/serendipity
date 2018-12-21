@@ -3,36 +3,37 @@ import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@an
 import { Observable } from 'rxjs';
 import { RoutingService } from '../../../core/routing/routing.service';
 import { BaseNavComponent } from './base-nav.component';
-import { ActivatedRoute } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-nav',
-    templateUrl: './nav.component.html',
-    styleUrls: [ './nav.component.scss' ],
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavComponent extends BaseNavComponent implements OnInit {
-    @ViewChild('mobileNavTrigger') mobileNavTrigger: ElementRef;
+  @ViewChild('mobileNavTrigger') mobileNavTrigger: ElementRef;
 
-    isMobileMenuCollapsed = true;
+  isMobileMenuCollapsed = true;
+  activeModule: string;
+  pageTitle$: Observable<string>;
 
-    pageTitle$: Observable<string>;
+  constructor(routingService: RoutingService) {
+    super(routingService);
+  }
 
-    constructor(routingService: RoutingService, private route: ActivatedRoute) {
-        super(routingService);
-    }
+  ngOnInit() {
+    this.pageTitle$ = this.routingService.pageTitle$;
+    this.routingService.activeModule$.pipe(takeUntil(this.destroy$)).subscribe(activeModule => this.activeModule = activeModule);
+  }
 
-    ngOnInit() {
-        this.pageTitle$ = this.routingService.pageTitle$;
-    }
+  toggleMobileMenu() {
+    this.toggleMobileMenuFlag();
+  }
 
-    toggleMobileMenu() {
-        this.toggleMobileMenuFlag();
-    }
-
-    private toggleMobileMenuFlag() {
-        this.isMobileMenuCollapsed = !this.isMobileMenuCollapsed;
-    }
+  private toggleMobileMenuFlag() {
+    this.isMobileMenuCollapsed = !this.isMobileMenuCollapsed;
+  }
 }
 
 

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
-import { BlogService } from './services/blog.service';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 
@@ -21,7 +20,6 @@ const routes: Routes = [
   declarations: [
     BlogPostsComponent,
     BlogPostComponent
-  ],
-  providers: [BlogService]
+  ]
 })
 export class BlogModule { }

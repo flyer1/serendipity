@@ -7,14 +7,17 @@
 
 <nav>
     <ul>
-        <li class="nav-item is-active">
-            <a [href]="blog" (click)="navigate($event, 'blog')" appLink>Home</a>
+        <li class="nav-item">
+            <a [href]="blog" (click)="navigate($event, 'blog')" [class.is-active]="activeModule === 'blog'" appLink>Home</a>
         </li>
         <li class="nav-item">
-            <a [href]="about" (click)="navigate($event, 'about')" appLink>About</a>
+            <a [href]="about" (click)="navigate($event, 'about')" [class.is-active]="activeModule === 'about'" appLink>About</a>
         </li>
         <li class="nav-item">
-            <a [href]="contact" (click)="navigate($event, 'contact')" appLink>Contact</a>
+            <a [href]="contact" (click)="navigate($event, 'contact')" [class.is-active]="activeModule === 'contact'" appLink>Contact</a>
+        </li>
+        <li class="nav-item">
+          <a>{{activeModule}}</a>
         </li>
     </ul>
 </nav>

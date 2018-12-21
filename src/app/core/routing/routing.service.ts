@@ -27,6 +27,14 @@ export class RoutingService {
         return this.navigateByUrl(url);
     }
 
+    gotoAbout(): Promise<boolean> {
+      return this.navigateByUrl('about');
+    }
+
+    gotoContact(): Promise<boolean> {
+      return this.navigateByUrl('contact');
+    }
+
     goBack(): void {
         this.location.back();
     }

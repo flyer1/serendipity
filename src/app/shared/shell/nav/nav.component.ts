@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@an
 import { Observable } from 'rxjs';
 import { RoutingService } from '../../../core/routing/routing.service';
 import { BaseNavComponent } from './base-nav.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-nav',
@@ -17,7 +18,7 @@ export class NavComponent extends BaseNavComponent implements OnInit {
 
     pageTitle$: Observable<string>;
 
-    constructor(routingService: RoutingService) {
+    constructor(routingService: RoutingService, private route: ActivatedRoute) {
         super(routingService);
     }
 

@@ -8,7 +8,7 @@ import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'posts' },
+  { path: '', pathMatch: 'full', redirectTo: 'posts' },
   { path: 'posts', component: BlogPostsComponent, data: { title: 'Blog Posts', description: 'Blog posts by Serendipity' } },
   { path: 'posts/:id', component: BlogPostComponent, data: { title: 'Blog Post', description: 'Blog Post' } }
 ];

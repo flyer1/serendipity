@@ -1,18 +1,20 @@
-<main class="blog-posts">
-    <section class="col-main" aria-label="blog post">
+<main>
+    <section class="col-main blog-post" aria-label="blog post">
         <div *ngIf="post" class="blog-post" role="list">
             <div class="heading">
                 <h2>{{post.title}}</h2>
                 <div class="sub-heading">
-                    <div class="when"><i class="sd-clock-4"></i>{{post.date}}</div>
-                    <div class="share">
-                        <a><i class="sd-facebook-squared"></i></a>
-                        <a><i class="sd-twitter"></i></a>
+                    <a class="avatar" (click)="navigateToProfile()" appLink>
+                      <img src="https://cdn-images-1.medium.com/fit/c/100/100/0*zh7FMZVdQzl-w-tt." class="avatar-image" alt="Open the profile of Liz Dias on another page">
+                  </a>
+                    <div class="post-info">
+                        <a class="who" (click)="navigateToProfile()" appLink>{{post.by}}</a>
+                        <div class="when">{{post.date}}</div>
                     </div>
                 </div>
             </div>
             <div class="body">
-                <p class="summary">{{post.content}}</p>
+                <p>{{post.content}}</p>
             </div>
         </div>
     </section>

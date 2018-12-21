@@ -1,6 +1,6 @@
-<main class="blog-posts">
-    <section class="col-main" aria-label="blog posts">
-        <div *ngIf="data" class="blog-posts" role="list">
+<main>
+    <section class="col-main blog-posts" aria-label="blog posts">
+        <div *ngIf="data" role="list">
             <div *ngFor="let post of data.results" class="post" role="listitem">
                 <div class="heading">
                     <h2>{{post.title}}</h2>

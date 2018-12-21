@@ -8,13 +8,13 @@
 <nav>
     <ul>
         <li class="nav-item is-active">
-            <a [href]="" (click)="navigate($event, '')">Home</a>
+            <a [href]="blog" (click)="navigate($event, 'blog')" appLink>Home</a>
         </li>
         <li class="nav-item">
-            <a [href]="about" (click)="navigate($event, 'about')">About</a>
+            <a [href]="about" (click)="navigate($event, 'about')" appLink>About</a>
         </li>
         <li class="nav-item">
-            <a [href]="contact" (click)="navigate($event, 'contact')">Contact</a>
+            <a [href]="contact" (click)="navigate($event, 'contact')" appLink>Contact</a>
         </li>
     </ul>
 </nav>

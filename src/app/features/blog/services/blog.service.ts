@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { ApiService } from 'src/app/core/data/api.service';
 import { BlogPosts } from '../models/blog-posts.model';

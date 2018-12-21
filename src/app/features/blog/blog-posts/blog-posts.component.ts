@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { BlogService } from '../services/blog.service';
 import { BlogPosts } from '../models/blog-posts.model';
-import { Router } from '@angular/router';
+import { RoutingService } from 'src/app/core/routing/routing.service';
 
 @Component({
   selector: 'app-blog-posts',
@@ -12,16 +13,15 @@ export class BlogPostsComponent implements OnInit {
 
   data: BlogPosts;
 
-  constructor(private blogService: BlogService, private router: Router) { }
+  constructor(private blogService: BlogService, private router: RoutingService) { }
 
   ngOnInit() {
     this.blogService.getAll().subscribe(response => {
-      console.log('got this', response);
       this.data = response;
     });
   }
 
   navigate(id: string) {
-    this.router.navigate(['blog/posts', id]);
+    this.router.gotoBlogPost(id);
   }
 }

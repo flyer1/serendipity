@@ -3,17 +3,8 @@
         <h2>Recent Posts</h2>
     </div>
     <ul>
-        <li>
-            <a href="">Post a</a>
-        </li>
-        <li>
-            <a href="">Post b</a>
-        </li>
-        <li>
-            <a href="">Post c</a>
-        </li>
-        <li>
-            <a href="">Post d</a>
+        <li *ngFor="let post of recentPosts">
+            <a (click)="navigate(post.id)" appLink>{{post.title}}</a>
         </li>
     </ul>
 </section>

@@ -55,38 +55,40 @@
   justify-content: space-between;
   font-family: $secondaryFont;
 
-  .blog-nav-item {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
+  .blog-nav-wrapper {
+    .blog-nav-item {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
 
-    .col-icon {
-      font-size: 36px;
-      width: 30px;
-    }
-
-    .col-info {
-      .post-name {
-        font-weight: 500;
-        margin-bottom: 3px;
+      .col-icon {
+        font-size: 36px;
+        width: 30px;
       }
 
-      .post-date {
-        font-size: 13px;
-        color: #999;
-      }
-    }
-
-    &.prev-post {
       .col-info {
-        padding-left: 7px;
-      }
-    }
+        .post-name {
+          font-weight: 500;
+          margin-bottom: 3px;
+        }
 
-    &.next-post {
-      .col-info {
-        text-align: right;
-        padding-right: 3px;
+        .post-date {
+          font-size: 13px;
+          color: #999;
+        }
+      }
+
+      &.prev-post {
+        .col-info {
+          padding-left: 7px;
+        }
+      }
+
+      &.next-post {
+        .col-info {
+          text-align: right;
+          padding-right: 3px;
+        }
       }
     }
   }

@@ -44,13 +44,8 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
       });
   }
 
-  navigate(direction: 'left' | 'right') {
-    switch (direction) {
-      case 'left':
-        break;
-      case 'right':
-        break;
-    }
+  navigate(id: string) {
+    this.router.gotoBlogPost(id);
   }
 
   navigateToProfile() {

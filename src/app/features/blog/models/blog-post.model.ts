@@ -6,13 +6,15 @@ export class BlogPost {
   title: string;
   date: Date;
   content: string;
-  previousPost: BlogPostSummary;
-  nextPost: BlogPostSummary;
 
   // Computed properties
   by: string;
   preview: string;
   formattedContent: string;
+
+  // Set by service
+  previousPost: BlogPostSummary;
+  nextPost: BlogPostSummary;
 
   constructor(data: any, markdown: MarkdownService) {
     Object.assign(this, data);

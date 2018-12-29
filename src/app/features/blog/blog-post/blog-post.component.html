@@ -26,25 +26,29 @@
             </div>
         </div>
 
-        <div class="blog-nav">
-            <a class="blog-nav-item prev-post" (click)="navigate('prev')">
-                <div class="col-icon">
-                    <i class="icon sd-chevron-left" aria-hidden="true"></i>
-                </div>
-                <div class="col-info">
-                    <div class="post-name">Name of post</div>
-                    <div class="post-date">Jan 10, 2001</div>
-                </div>
-            </a>
-            <a class="blog-nav-item next-post" (click)="navigate('next')">
-                <div class="col-info">
-                    <div class="post-name">Name of post</div>
-                    <div class="post-date">Jan 10, 2001</div>
-                </div>
-                <div class="col-icon">
+        <div *ngIf="post" class="blog-nav">
+            <div class="blog-nav-wrapper">
+                <a *ngIf="post.previousPost" class="blog-nav-item prev-post" (click)="navigate(post.previousPost.id)">
+                    <div class="col-icon">
+                        <i class="icon sd-chevron-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-info">
+                        <div class="post-name">{{post.previousPost.title}}</div>
+                        <div class="post-date">{{post.previousPost.date}}</div>
+                    </div>
+                </a>
+            </div>
+            <div class="blog-nav-wrapper">
+                <a *ngIf="post.nextPost" class="blog-nav-item next-post" (click)="navigate(post.nextPost.id)">
+                    <div class="col-info">
+                        <div class="post-name">{{post.nextPost.title}}</div>
+                        <div class="post-date">{{post.nextPost.date}}</div>
+                    </div>
+                    <div class="col-icon">
                         <i class="icon sd-chevron-right" aria-hidden="true"></i>
-                </div>
-            </a>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 

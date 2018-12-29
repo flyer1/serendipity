@@ -25,6 +25,27 @@
                 </div>
             </div>
         </div>
+
+        <div class="blog-nav">
+            <a class="blog-nav-item prev-post" (click)="navigate('prev')">
+                <div class="col-icon">
+                    <i class="icon sd-chevron-left" aria-hidden="true"></i>
+                </div>
+                <div class="col-info">
+                    <div class="post-name">Name of post</div>
+                    <div class="post-date">Jan 10, 2001</div>
+                </div>
+            </a>
+            <a class="blog-nav-item next-post" (click)="navigate('next')">
+                <div class="col-info">
+                    <div class="post-name">Name of post</div>
+                    <div class="post-date">Jan 10, 2001</div>
+                </div>
+                <div class="col-icon">
+                        <i class="icon sd-chevron-right" aria-hidden="true"></i>
+                </div>
+            </a>
+        </div>
     </section>
 
     <aside class="side-bar-layout">

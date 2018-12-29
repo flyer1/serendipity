@@ -42,9 +42,17 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
       .subscribe(val => {
         this.post.formattedContent = this.markdown.compile(val);
       });
-
-
   }
+
+  navigate(direction: 'left' | 'right') {
+    switch (direction) {
+      case 'left':
+        break;
+      case 'right':
+        break;
+    }
+  }
+
   navigateToProfile() {
     this.router.gotoAbout();
   }

@@ -1,46 +1,93 @@
- .blog-post {
-   .heading {
-     h2 {
-       font-size: 42px;
-       font-weight: 600;
-     }
+@import "../../../../styles/variables/variables";
 
-     .sub-heading {
-       margin: 24px 0;
-       display: flex;
-       align-items: center;
+.blog-post {
+  .heading {
+    h2 {
+      font-size: 42px;
+      font-weight: 600;
+    }
 
-       .avatar {
-         .avatar-image {
-           display: inline-block;
-           vertical-align: middle;
-           border-radius: 100%;
-           width: 50px;
-           height: 50px;
-         }
-       }
+    .sub-heading {
+      margin: 24px 0;
+      display: flex;
+      align-items: center;
 
-       .post-info {
-         padding-left: 15px;
+      .avatar {
+        .avatar-image {
+          display: inline-block;
+          vertical-align: middle;
+          border-radius: 100%;
+          width: 50px;
+          height: 50px;
+        }
+      }
 
-         .who {
-           display: inline-block;
-           text-decoration: none;
-           color: rgba(0, 0, 0, .54);
-           margin-bottom: 3px;
-         }
+      .post-info {
+        padding-left: 15px;
 
-         .when {
-           color: rgba(0, 0, 0, .54);
-         }
-       }
-     }
-   }
+        .who {
+          display: inline-block;
+          text-decoration: none;
+          color: rgba(0, 0, 0, .54);
+          margin-bottom: 3px;
+        }
 
-   .body {
-     p {
-       line-height: 33px;
-       font-size: 21px;
-     }
-   }
- }
+        .when {
+          color: rgba(0, 0, 0, .54);
+        }
+      }
+    }
+  }
+
+  .body {
+    p {
+      line-height: 33px;
+      font-size: 21px;
+    }
+  }
+}
+
+.blog-nav {
+  display: flex;
+  margin-top: 70px;
+  padding-top: 20px;
+  border-top: solid 1px #f0f0f0;
+  justify-content: space-between;
+  font-family: $secondaryFont;
+
+  .blog-nav-item {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+
+    .col-icon {
+      font-size: 36px;
+      width: 30px;
+    }
+
+    .col-info {
+      .post-name {
+        font-weight: 500;
+        margin-bottom: 3px;
+      }
+
+      .post-date {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+
+    &.prev-post {
+      .col-info {
+        padding-left: 7px;
+      }
+    }
+
+    &.next-post {
+      .col-info {
+        text-align: right;
+        padding-right: 3px;
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import "../../../styles/variables/variables";
+
 .side-bar {
   .side-bar-card {
     background: white;
@@ -10,12 +12,13 @@
       position: relative;
 
       h2 {
+        font-family: $secondaryFont;
         margin: 0;
-        font-size: 20px;
+        font-size: 18px;
         padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-weight: 400;
+        font-weight: 500;
       }
 
       // &:after {

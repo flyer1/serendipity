@@ -1,10 +1,13 @@
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
+import { BlogPostSummary } from './blog-post-summary.model';
 
 export class BlogPost {
   id: string;
   title: string;
   date: Date;
   content: string;
+  previousPost: BlogPostSummary;
+  nextPost: BlogPostSummary;
 
   // Computed properties
   by: string;

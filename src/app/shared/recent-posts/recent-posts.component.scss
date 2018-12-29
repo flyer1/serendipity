@@ -1,15 +1,24 @@
 .recent-posts {
-  height: 320px;
   margin-bottom: 15px;
 
   border-radius: 4px;
 
   ul {
     list-style: none;
+    margin: 0;
+    padding: 0 0 15px 10px;
 
     li {
       a {
+        display: inline-block;
+        color: #1DA1F2;
+        text-decoration: none;
+        margin-bottom: 4px;
+        width: 100%;
 
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

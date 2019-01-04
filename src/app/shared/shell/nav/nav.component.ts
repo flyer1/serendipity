@@ -15,7 +15,7 @@ export class NavComponent extends BaseNavComponent implements OnInit {
   @ViewChild('mobileNavTrigger') mobileNavTrigger: ElementRef;
 
   isMobileMenuCollapsed = true;
-  activeModule: string;
+  activeFeature: string;
   pageTitle$: Observable<string>;
 
   constructor(routingService: RoutingService) {
@@ -24,7 +24,7 @@ export class NavComponent extends BaseNavComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle$ = this.routingService.pageTitle$;
-    this.routingService.activeModule$.pipe(takeUntil(this.destroy$)).subscribe(activeModule => this.activeModule = activeModule);
+    this.routingService.activeFeature$.pipe(takeUntil(this.destroy$)).subscribe(activeFeature => this.activeFeature = activeFeature);
   }
 
   toggleMobileMenu() {

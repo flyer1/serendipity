@@ -1,7 +1,7 @@
 <main>
     <section class="col-main blog-posts" aria-label="blog posts">
         <div *ngIf="data" role="list">
-            <div *ngFor="let post of data.results" class="post" role="listitem">
+            <a *ngFor="let post of data.results" class="post" role="listitem" (click)="navigate(post.id)" appLink>
                 <div class="heading">
                     <h2>{{post.title}}</h2>
                     <div class="sub-heading">
@@ -13,13 +13,13 @@
                     </div>
                 </div>
                 <div class="body">
-                    <p class="summary">{{post.content}}</p>
+                    <p class="summary">{{post.preview}}</p>
                 </div>
 
                 <div class="actions">
-                    <a (click)="navigate(post.id)" appLink>Read More</a>
+                    <div>Read More</div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 

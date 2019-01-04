@@ -21,7 +21,9 @@ export class BlogPost {
 
     if (this.title === 'Demo Post') { this.setDemoPost(); }
 
-    this.preview = this.content.substr(0, 100) + '...';
+    this.preview = this.content.substr(0, 500);
+    if (this.content.length > 500) { this.preview += '...'; }
+
     this.by = 'Liz Dias';
 
     if (markdown) {

@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: AboutComponent,
-    data: { title: 'About', description: 'About' }
+    data: { title: 'About', description: 'About', isTopLevelFeature: true}
   }
 ];
 

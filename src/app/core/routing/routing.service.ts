@@ -11,13 +11,13 @@ export class RoutingService {
 
   private routeDataSubject$ = new ReplaySubject<any>(1);
   private pageTitleSubject$ = new ReplaySubject<string>(1);
-  private activeModuleSubject$ = new ReplaySubject<string>();
+  private activeFeatureSubject$ = new ReplaySubject<string>();
   private pageTitleSuffix: string;
   private destroy$ = new Subject();
 
   pageTitle$ = this.pageTitleSubject$.asObservable();
   routeData$ = this.routeDataSubject$.asObservable();
-  activeModule$ = this.activeModuleSubject$.asObservable();
+  activeFeature$ = this.activeFeatureSubject$.asObservable();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private location: Location, private title: Title, private meta: Meta) { }
 
@@ -76,7 +76,11 @@ export class RoutingService {
 
       const frags = event.url.split('/');
       if (frags.length >= 1) {
-        this.activeModuleSubject$.next(frags[1].toLowerCase());
+        if (data.isTopLevelFeature) {
+          this.activeFeatureSubject$.next(frags[1].toLowerCase());
+        } else {
+          this.activeFeatureSubject$.next(null);
+        }
       }
 
       this.setTitle(title);

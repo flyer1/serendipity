@@ -8,8 +8,8 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'posts' },
-  { path: 'posts', component: BlogPostsComponent, data: { title: 'Blog Posts', description: 'Blog posts by Serendipity' } },
-  { path: 'posts/:id', component: BlogPostComponent, data: { title: 'Blog Post', description: 'Blog Post' } }
+  { path: 'posts', component: BlogPostsComponent, data: { title: 'Blog Posts', description: 'Blog posts by Serendipity', isTopLevelFeature: true } },
+  { path: 'posts/:id', component: BlogPostComponent, data: { title: 'Blog Post', description: 'Blog Post', isTopLevelFeature: false } }
 ];
 
 @NgModule({

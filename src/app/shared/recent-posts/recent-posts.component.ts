@@ -12,7 +12,7 @@ import { RoutingService } from 'src/app/core/routing/routing.service';
 })
 export class RecentPostsComponent implements AfterViewInit {
 
-  private recentPosts: BlogPostSummary[];
+  recentPosts: BlogPostSummary[];
 
   constructor(private recentPostsService: RecentPostsService, private router: RoutingService) { }
 

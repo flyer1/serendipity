@@ -8,6 +8,8 @@ import { NavComponent } from './shell/nav/nav.component';
 import { PhotoCardComponent } from './photo-card/photo-card.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 import { LinkDirective } from './directives/link.directive';
+import { MobileNavComponent } from './shell/nav/mobile-nav.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   imports: [
@@ -17,20 +19,24 @@ import { LinkDirective } from './directives/link.directive';
   declarations: [
     FooterComponent,
     LinkDirective,
+    MobileNavComponent,
     NavComponent,
     PhotoCardComponent,
     RecentPostsComponent,
     SideBarComponent,
+    SubscribeComponent,
     TwitterComponent,
   ],
   exports: [
     ReactiveFormsModule,
     FooterComponent,
     LinkDirective,
+    MobileNavComponent,
     NavComponent,
     PhotoCardComponent,
     RecentPostsComponent,
     SideBarComponent,
+    SubscribeComponent,
     TwitterComponent,
   ],
   providers: [

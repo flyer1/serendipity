@@ -76,7 +76,7 @@ export class RoutingService {
 
       const frags = event.url.split('/');
       if (frags.length >= 1) {
-        if (data.isTopLevelFeature) {
+        if (data && data.isTopLevelFeature) {
           this.activeFeatureSubject$.next(frags[1].toLowerCase());
         } else {
           this.activeFeatureSubject$.next(null);

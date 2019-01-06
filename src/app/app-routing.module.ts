@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'blog' },
   { path: 'blog', loadChildren: './features/blog/blog.module#BlogModule' },
   { path: 'about', loadChildren: './features/about/about.module#AboutModule' },
+  { path: 'contact', loadChildren: './features/contact/contact.module#ContactModule' },
 
   /** Fall through route to catch invalid URLs and redirecting to 404 page */
   { path: '**', component: Error404Component }

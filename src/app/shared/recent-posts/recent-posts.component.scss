@@ -1,3 +1,5 @@
+@import "../../../styles/variables/variables";
+
 .recent-posts {
   margin-bottom: 15px;
 
@@ -16,8 +18,17 @@
         margin-bottom: 4px;
         width: 100%;
 
+        .icon {
+          font-size: 12px;
+          color: #3b789c;
+          margin-right: 5px;
+          vertical-align: -1px;
+        }
+
         &:hover {
-          text-decoration: underline;
+          span {
+            text-decoration: underline;
+          }
         }
       }
     }

@@ -3,7 +3,7 @@
 .blog-posts {
   .post {
     display: block;
-    padding: 30px 70px;
+    padding: 30px 10%;
     border: 1px solid #bbb;
     //box-shadow: -13px 8px 10px rgba(175, 175, 175, 0.3);
     margin-bottom: 20px;
@@ -17,11 +17,12 @@
 
     .heading {
       h2 {
-        font-family: $secondaryFont;
+        font-family: $experimentalFont;
         margin: 0 0 15px 0;
         text-align: center;
         font-weight: 500;
-        font-size: 32px;
+        font-size: 26px;
+        text-transform: uppercase;
         line-height: 0.95em;
       }
 
@@ -64,6 +65,27 @@
 
     .actions {
       text-align: center;
+
+      .action {
+        cursor: pointer;
+        color: #1DA1F2;
+        font-size: 16px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+////////////////////// RESPONSIVENESS ////////////////////
+@media (max-width: 824px) {
+  .blog-posts {
+    .post {
+      border-radius: 0;
+      border-right: none;
+      border-left: none;
     }
   }
 }

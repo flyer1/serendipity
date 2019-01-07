@@ -4,7 +4,10 @@
     </div>
     <ul>
         <li *ngFor="let post of recentPosts">
-            <a (click)="navigate(post.id)" appLink>{{post.title}}</a>
+            <a (click)="navigate(post.id)" appLink>
+                <i class="icon sd-chevron-right" aria-hidden="true"></i>
+                <span>{{post.title}}</span>
+            </a>
         </li>
     </ul>
 </section>

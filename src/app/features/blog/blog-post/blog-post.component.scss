@@ -3,8 +3,9 @@
 .blog-post {
   .heading {
     h2 {
+      font-family: $experimentalFont;
       font-size: 42px;
-      font-weight: 600;
+      font-weight: 400;
       margin-bottom: 0px;
     }
 
@@ -16,10 +17,21 @@
       .avatar {
         .avatar-image {
           display: inline-block;
+          position: relative;
           vertical-align: middle;
           border-radius: 100%;
           width: 90px;
           height: 90px;
+          background: #d2d2d2;
+
+          &:after {
+            content: 'AS';
+            position: absolute;
+            font-size: 40px;
+            color: white;
+            top: 20px;
+            left: 20px;
+          }
         }
       }
 
@@ -52,7 +64,7 @@
   display: flex;
   margin-top: 70px;
   padding-top: 20px;
-  border-top: solid 1px #f0f0f0;
+  border-top: solid 1px #dcdcdc;
   justify-content: space-between;
   font-family: $secondaryFont;
 

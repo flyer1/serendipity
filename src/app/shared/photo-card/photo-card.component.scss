@@ -7,5 +7,16 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
+    background-color: black;
+  }
+}
+
+//////////////// RESPONSIVENESS //////////////////
+@media(max-width: 860px) {
+  .photo-card {
+    .photo {
+      border-radius: 0;
+      background-size: contain;
+    }
   }
 }

@@ -1,3 +1,14 @@
 .tweets {
   width: 350px;
 }
+
+//////////////// RESPONSIVENESS //////////////////
+@media(max-width: 860px) {
+  .tweets {
+    width: 100%;
+
+    .twitter-timeline {
+      width: 100% !important;
+    }
+  }
+}

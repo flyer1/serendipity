@@ -32,3 +32,14 @@
     }
   }
 }
+
+//////////////// RESPONSIVENESS //////////////////
+@media(max-width: 860px) {
+  .side-bar {
+    .side-bar-card {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
 import { TwitterService } from 'src/app/core/social/twitter.service';
@@ -7,7 +7,8 @@ import { ComponentBase } from 'src/app/core/component/component-base';
 @Component({
   selector: 'app-twitter',
   templateUrl: 'twitter.component.html',
-  styleUrls: ['twitter.component.scss']
+  styleUrls: ['twitter.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class TwitterComponent extends ComponentBase implements AfterViewInit {

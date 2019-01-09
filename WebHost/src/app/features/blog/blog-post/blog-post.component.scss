@@ -3,6 +3,7 @@
 .blog-post {
   padding-right: 20px;
   padding-left: 20px;
+  margin-bottom: 10px;
 
   .heading {
     h2 {
@@ -56,16 +57,40 @@
   }
 
   .body {
+    margin-bottom: 60px;
+
     p {
       line-height: 33px;
       font-size: 21px;
+    }
+  }
+
+  .share {
+    text-align: right;
+    cursor: pointer;
+    font-size: 40px;
+
+    a {
+      margin-left: 15px;
+
+      &.facebook {
+        color: rgb(49, 89, 146);
+      }
+
+      &.twitter {
+        color: rgb(0, 172, 240);
+      }
+
+      &:hover {
+        color: #55abed;
+      }
     }
   }
 }
 
 .blog-nav {
   display: flex;
-  margin-top: 70px;
+  margin-top: 10px;
   padding-top: 20px;
   border-top: solid 1px #dcdcdc;
   justify-content: space-between;

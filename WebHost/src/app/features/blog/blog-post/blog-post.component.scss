@@ -65,29 +65,43 @@
 
       img {
         width: 100%;
+        height: auto;
       }
     }
   }
 
   .share {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     text-align: right;
     cursor: pointer;
     font-size: 40px;
 
     a {
       margin-left: 15px;
+      text-decoration: none;
 
       &.facebook {
         color: rgb(49, 89, 146);
+
+        &:hover {
+          color: rgb(38, 72, 121);
+        }
       }
 
       &.twitter {
         color: rgb(0, 172, 240);
-      }
 
-      &:hover {
-        color: #55abed;
+        &:hover {
+          color: rgb(5, 149, 206);
+        }
       }
+    }
+
+    label {
+      font-size: 13px;
+      color: #666;
     }
   }
 }

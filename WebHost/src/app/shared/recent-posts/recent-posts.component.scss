@@ -23,6 +23,10 @@
           vertical-align: -1px;
         }
 
+        &.is-active {
+          font-weight: bold;
+        }
+
         &:hover {
           span {
             text-decoration: underline;

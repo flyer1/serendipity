@@ -85,7 +85,7 @@ export class RoutingService {
 
       this.setTitle(title);
       this.setDescription(description);
-      this.routeDataSubject$.next(data);
+      this.routeDataSubject$.next({url: event.url, data: data });
     });
 
   }

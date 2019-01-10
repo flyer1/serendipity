@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +11,8 @@ import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 
 @Component({
   templateUrl: './blog-post.component.html',
-  styleUrls: ['./blog-post.component.scss']
+  styleUrls: ['./blog-post.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BlogPostComponent extends ComponentBase implements OnInit {
 

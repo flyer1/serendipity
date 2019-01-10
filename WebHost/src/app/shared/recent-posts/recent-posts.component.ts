@@ -15,6 +15,7 @@ import { ComponentBase } from 'src/app/core/component/component-base';
 export class RecentPostsComponent extends ComponentBase implements OnInit, AfterViewInit {
 
   recentPosts: BlogPostSummary[];
+  currentId: string;
 
   constructor(private recentPostsService: RecentPostsService, private router: RoutingService) {
     super();
@@ -22,7 +23,17 @@ export class RecentPostsComponent extends ComponentBase implements OnInit, After
 
   ngOnInit() {
     // TODO: Add id to the data passed down so the subscriber knows more about where the app is and can react. In this case, compare id with summary.id to mark active item
-    this.router.routeData$.pipe(takeUntil(this.destroy$)).subscribe(d => { console.log(d); });
+    this.router.routeData$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event: { url: string, data: any }) => {
+        const frags = event.url.split('/');
+        if (frags.length > 2 && frags[frags.length - 2] === 'posts') {
+          // Site is navigated to the blog posts view. Extract out the ID
+          this.currentId = frags[frags.length - 1];
+        } else {
+          this.currentId = null;
+        }
+      });
   }
 
   ngAfterViewInit() {

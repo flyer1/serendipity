@@ -21,10 +21,15 @@ export class BlogPost {
 
     if (this.title === 'Demo Post') { this.setDemoPost(); }
 
-    this.preview = this.content.substr(0, 500);
+    let preview = this.content;
+    // Remove references to images
+    const regex = /\!\[.*\]\(.*\)/gi;
+    preview = preview.replace(regex, '');
+    this.preview = preview.substr(0, 500);
+
     if (this.content.length > 500) { this.preview += '...'; }
 
-    this.by = 'Liz Dias';
+    // this.by = '******';
 
     if (markdown) {
       this.formattedContent = markdown.compile(this.content);

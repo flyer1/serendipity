@@ -19,6 +19,8 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   post: BlogPost;
   private form: FormGroup;
 
+  get isNew() { return this.post.id === '-1'; }
+
   constructor(private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private fb: FormBuilder, private markdown: MarkdownService) {
     super();
   }
@@ -29,6 +31,13 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   }
 
   getData(id: string) {
+    if (id === '-1') {
+      const todayDate = new Date();
+      const today = todayDate.getFullYear() + '-' + todayDate.getMonth() + 1 + '-' + todayDate.getDate();
+      this.post = new BlogPost({ id: id, title: 'New Blog Post', content: '', date: today }, this.markdown);
+      return;
+    }
+
     this.blogService.get(id).subscribe(blogPost => {
       this.post = blogPost;
     });
@@ -51,6 +60,25 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
 
   navigateToProfile() {
     this.router.gotoAbout();
+  }
+
+  toolbar(tool: string) {
+    switch (tool) {
+      case 'heading':
+        break;
+      case 'bold':
+        break;
+      case 'italic':
+        break;
+      case 'link':
+        break;
+      case 'code':
+        break;
+      case 'list-bullet':
+        break;
+      case 'list-ordered':
+        break;
+    }
   }
 }
 

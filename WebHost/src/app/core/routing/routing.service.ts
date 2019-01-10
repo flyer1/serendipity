@@ -41,6 +41,10 @@ export class RoutingService {
     return this.router.navigate(['blog/posts', id]);
   }
 
+  gotoNewBlogPost(): Promise<boolean> {
+    return this.router.navigate(['blog/posts', '-1']);
+  }
+
   goBack(): void {
     this.location.back();
   }

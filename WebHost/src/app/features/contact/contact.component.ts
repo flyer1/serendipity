@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Contact } from './models/contact.model';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -6,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  contact: Contact;
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.contact = new Contact();
+
+    this.initForm();
   }
 
+  initForm() {
+    this.form = this.fb.group({ name: '', comment: '' });
+  }
 }

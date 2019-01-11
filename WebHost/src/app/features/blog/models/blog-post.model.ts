@@ -19,8 +19,6 @@ export class BlogPost {
   constructor(data: any, markdown: MarkdownService) {
     Object.assign(this, data);
 
-    if (this.title === 'Demo Post') { this.setDemoPost(); }
-
     let preview = this.content;
     // Remove references to images
     const regex = /\!\[.*\]\(.*\)/gi;
@@ -34,15 +32,5 @@ export class BlogPost {
     if (markdown) {
       this.formattedContent = markdown.compile(this.content);
     }
-  }
-
-  // A temp function that is used to educate about how to use markdown
-  setDemoPost() {
-    const content = `this is something
-and now I can have newlines. Finally!
-And it'll be much easier to work with
-## okay
-I'll go home now.`;
-    this.content = content;
   }
 }

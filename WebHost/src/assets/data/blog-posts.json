@@ -9,12 +9,6 @@
             "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum mollitia corporis quia nostrum incidunt hic velit ea, necessitatibus omnis explicabo totam impedit et deserunt reprehenderit vitae eligendi repellendus numquam dicta? Nisi id, cumque minus recusandae fuga nihil voluptatibus placeat ipsam aliquid perferendis aperiam? Dolores odio accusantium blanditiis fugit, sint delectus!"
         },
         {
-            "id": "2018-02-02",
-            "title": "Demo Post",
-            "date": "2018-02-02",
-            "content": "(this content will be replaced by a javascript variable for now)"
-        },
-        {
             "id": "2018-11-18",
             "title": "Thankful",
             "date": "2018-11-18",

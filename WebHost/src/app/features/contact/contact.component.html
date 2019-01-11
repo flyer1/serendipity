@@ -1,6 +1,19 @@
 <main class="contact">
     <section class="col-main" aria-label="contact">
-        contact stuff goes here.
+        <div [formGroup]="form" class="contact-form">
+            <div class="control-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" class="control" formControlName="name"/>
+            </div>
+            <div class="control-group">
+                <label for="comment">Comment</label>
+                <textarea id="comment" type="textarea" class="control" formControlName="comment"></textarea>
+            </div>
+
+            <div class="form-buttons">
+                <a class="button">Send</a>
+            </div>
+        </div>
     </section>
 
     <aside class="side-bar-layout">

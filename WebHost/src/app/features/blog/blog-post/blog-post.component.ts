@@ -20,6 +20,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   private form: FormGroup;
 
   get isNew() { return this.post.id === '-1'; }
+  private get formFields() { return this.form.value; }
 
   constructor(private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private fb: FormBuilder, private markdown: MarkdownService) {
     super();
@@ -63,22 +64,31 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   }
 
   toolbar(tool: string) {
+    let newContent = this.formFields.content;
+
     switch (tool) {
       case 'heading':
         break;
       case 'bold':
+        newContent += ' ****';
         break;
       case 'italic':
+        newContent += ' __';
         break;
       case 'link':
+        newContent += '\n![](PASTE_URL_HERE)';
         break;
       case 'code':
         break;
       case 'list-bullet':
+        newContent += '\n* ';
         break;
       case 'list-ordered':
+        newContent += '\n1. ';
         break;
     }
+
+    this.form.patchValue({ content: newContent });
   }
 }
 

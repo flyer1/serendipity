@@ -34,13 +34,6 @@ export class NavComponent extends BaseNavComponent implements OnInit {
   private toggleMobileMenuFlag() {
     this.isMobileMenuCollapsed = !this.isMobileMenuCollapsed;
   }
-
-  /**
-   * A little easter egg to get into the blog post editor (nothing is persisted on the back end, this is just used to build the markdown)
-   */
-  editBlogPost() {
-    this.routingService.gotoNewBlogPost();
-  }
 }
 
 

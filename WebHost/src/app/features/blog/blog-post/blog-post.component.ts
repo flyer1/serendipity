@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 
 import { BlogService } from '../services/blog.service';
 import { BlogPost } from '../models/blog-post.model';
 import { RoutingService } from 'src/app/core/routing/routing.service';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './blog-post.component.html',
@@ -15,16 +16,31 @@ import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 })
 export class BlogPostComponent extends ComponentBase implements OnInit {
 
+  private form: FormGroup;
   post: BlogPost;
 
+  private get formFields() { return this.form.value; }
   get isNew() { return this.post.id === '-1'; }
 
-  constructor(private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
     super();
   }
 
   ngOnInit() {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(parms => this.getData(parms.id));
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.fb.group({ content: '', formattedContent: '' });
+
+    this.form.get('content')
+      .valueChanges
+      .pipe(takeUntil(this.destroy$), debounceTime(300))
+      .subscribe(val => {
+        this.post.content = val;
+        this.post.formattedContent = this.markdown.compile(val);
+      });
   }
 
   getData(id: string) {

@@ -14,8 +14,10 @@
                 </div>
             </div>
             <div class="body">
-                <p [innerHtml]="post.formattedContent"></p>
-                <app-editor *ngIf="isNew" [content]="post.content"></app-editor>
+              <div [formGroup]="form">
+                <app-editor *ngIf="isNew" formControlName="content"></app-editor>
+              </div>
+              <p [innerHtml]="post.formattedContent"></p>
             </div>
             <div class="share">
                 <label>Follow Accept Serendipity:</label>

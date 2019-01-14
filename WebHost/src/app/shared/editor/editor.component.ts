@@ -1,67 +1,78 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
-import { ComponentBase } from 'src/app/core/component/component-base';
-import { MarkdownService } from 'src/app/core/formatter/markdown.service';
-import { takeUntil, debounceTime } from 'rxjs/operators';
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  styleUrls: ['./editor.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => EditorComponent),
+      multi: true
+    }
+  ]
 })
-export class EditorComponent extends ComponentBase implements OnInit {
+export class EditorComponent implements ControlValueAccessor {
 
-  @Input() content: string;
+  value: string;
 
-  private form: FormGroup;
+  onChanged: any = () => { };
+  onTouched: any = () => { };
 
-  private get formFields() { return this.form.value; }
+  // #region ControlValueAccessor Implementation
 
-  constructor(private fb: FormBuilder, private markdown: MarkdownService) {
-    super();
+  registerOnChange(fn: any) {
+    this.onChanged = fn;
   }
 
-  ngOnInit() {
-    this.initForm();
+  registerOnTouched(fn: any) {
+    // This is required by the ControlValueAccessor interface but we don't need it beyond that.
+    this.onTouched = fn;
   }
 
-  initForm() {
-    this.form = this.fb.group({ content: '', formattedContent: '' });
+  writeValue(value: string) {
+    this.value = value;
+  }
 
-    this.form.get('content')
-      .valueChanges
-      .pipe(takeUntil(this.destroy$), debounceTime(300))
-      .subscribe(val => {
-        // this.post.formattedContent = this.markdown.compile(val);
-      });
+  onBlur() {
+    if (this.value) {
+      this.onChanged(this.value);
+    }
+  }
+
+  // #endregion
+
+  inputChanged(event) {
+    this.value = event.target.value;
+    this.onChanged(this.value);
   }
 
   toolbar(tool: string) {
-    let newContent = this.formFields.content;
+    let newValue = this.value;
 
     switch (tool) {
       case 'heading':
         break;
       case 'bold':
-        newContent += ' ****';
+        newValue += ' ****';
         break;
       case 'italic':
-        newContent += ' __';
+        newValue += ' __';
         break;
       case 'link':
-        newContent += '\n![](PASTE_URL_HERE)';
+        newValue += '\n![](PASTE_URL_HERE)';
         break;
       case 'code':
         break;
       case 'list-bullet':
-        newContent += '\n* ';
+        newValue += '\n* ';
         break;
       case 'list-ordered':
-        newContent += '\n1. ';
+        newValue += '\n1. ';
         break;
     }
 
-    this.form.patchValue({ content: newContent });
+    this.writeValue(newValue);
   }
 }

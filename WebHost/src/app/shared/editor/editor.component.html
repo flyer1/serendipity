@@ -1,5 +1,5 @@
 <div class="editor">
-    <div class="markdown-toolbar">
+    <div class="editor-toolbar">
         <a href="" class="toolbar-icon" (click)="toolbar('heading')" appLink><i class="sd-letter"></i></a>
         <a href="" class="toolbar-icon" (click)="toolbar('bold')" appLink><i class="sd-bold"></i></a>
         <a href="" class="toolbar-icon" (click)="toolbar('italic')" appLink><i class="sd-italic"></i></a>
@@ -8,7 +8,7 @@
         <a href="" class="toolbar-icon" (click)="toolbar('list-bullet')" appLink><i class="sd-list-bullet"></i></a>
         <a href="" class="toolbar-icon" (click)="toolbar('list-ordered')" appLink><i class="sd-list-ordered"></i></a>
     </div>
-    <div [formGroup]="form">
-        <textarea formControlName="content"></textarea>
+    <div class="editor-body">
+        <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()"></textarea>
     </div>
 </div>

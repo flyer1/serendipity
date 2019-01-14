@@ -10,6 +10,7 @@ import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 import { LinkDirective } from './directives/link.directive';
 import { MobileNavComponent } from './shell/nav/mobile-nav.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     ReactiveFormsModule
   ],
   declarations: [
+    EditorComponent,
     FooterComponent,
     LinkDirective,
     MobileNavComponent,
@@ -28,7 +30,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     TwitterComponent,
   ],
   exports: [
-    ReactiveFormsModule,
+    EditorComponent,
     FooterComponent,
     LinkDirective,
     MobileNavComponent,
@@ -38,6 +40,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     SideBarComponent,
     SubscribeComponent,
     TwitterComponent,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: 'window', useFactory: windowFactory }

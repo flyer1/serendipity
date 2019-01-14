@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 
 import { BlogService } from '../services/blog.service';
 import { BlogPost } from '../models/blog-post.model';
 import { RoutingService } from 'src/app/core/routing/routing.service';
-import { takeUntil, debounceTime } from 'rxjs/operators';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 
@@ -17,18 +16,15 @@ import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 export class BlogPostComponent extends ComponentBase implements OnInit {
 
   post: BlogPost;
-  private form: FormGroup;
 
   get isNew() { return this.post.id === '-1'; }
-  private get formFields() { return this.form.value; }
 
-  constructor(private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private fb: FormBuilder, private markdown: MarkdownService) {
+  constructor(private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
     super();
   }
 
   ngOnInit() {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(parms => this.getData(parms.id));
-    this.initForm();
   }
 
   getData(id: string) {
@@ -44,51 +40,12 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
     });
   }
 
-  initForm() {
-    this.form = this.fb.group({ content: '', formattedContent: '' });
-
-    this.form.get('content')
-      .valueChanges
-      .pipe(takeUntil(this.destroy$), debounceTime(300))
-      .subscribe(val => {
-        this.post.formattedContent = this.markdown.compile(val);
-      });
-  }
-
   navigate(id: string) {
     this.router.gotoBlogPost(id);
   }
 
   navigateToProfile() {
     this.router.gotoAbout();
-  }
-
-  toolbar(tool: string) {
-    let newContent = this.formFields.content;
-
-    switch (tool) {
-      case 'heading':
-        break;
-      case 'bold':
-        newContent += ' ****';
-        break;
-      case 'italic':
-        newContent += ' __';
-        break;
-      case 'link':
-        newContent += '\n![](PASTE_URL_HERE)';
-        break;
-      case 'code':
-        break;
-      case 'list-bullet':
-        newContent += '\n* ';
-        break;
-      case 'list-ordered':
-        newContent += '\n1. ';
-        break;
-    }
-
-    this.form.patchValue({ content: newContent });
   }
 }
 

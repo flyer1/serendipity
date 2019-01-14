@@ -9,6 +9,6 @@
         <a href="" class="toolbar-icon" (click)="toolbar('list-ordered')" appLink><i class="sd-list-ordered"></i></a>
     </div>
     <div class="editor-body">
-        <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()"></textarea>
+        <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()" #input></textarea>
     </div>
 </div>

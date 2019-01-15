@@ -10,7 +10,7 @@ import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 import { LinkDirective } from './directives/link.directive';
 import { MobileNavComponent } from './shell/nav/mobile-nav.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
-import { EditorComponent } from './editor/editor.component';
+import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
 
 @NgModule({
   imports: [
@@ -18,10 +18,10 @@ import { EditorComponent } from './editor/editor.component';
     ReactiveFormsModule
   ],
   declarations: [
-    EditorComponent,
     FooterComponent,
     LinkDirective,
     MobileNavComponent,
+    MarkdownEditorComponent,
     NavComponent,
     PhotoCardComponent,
     RecentPostsComponent,
@@ -30,10 +30,10 @@ import { EditorComponent } from './editor/editor.component';
     TwitterComponent,
   ],
   exports: [
-    EditorComponent,
     FooterComponent,
     LinkDirective,
     MobileNavComponent,
+    MarkdownEditorComponent,
     NavComponent,
     PhotoCardComponent,
     RecentPostsComponent,

@@ -15,7 +15,7 @@
             </div>
             <div class="body">
               <div [formGroup]="form">
-                <app-editor *ngIf="isNew" formControlName="content"></app-editor>
+                <app-markdown-editor *ngIf="isNew" formControlName="content"></app-markdown-editor>
               </div>
               <p [innerHtml]="post.formattedContent"></p>
             </div>

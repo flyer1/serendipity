@@ -2,18 +2,18 @@ import { Component, forwardRef, ViewChild, ElementRef, HostListener } from '@ang
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'app-editor',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss'],
+  selector: 'app-markdown-editor',
+  templateUrl: './markdown-editor.component.html',
+  styleUrls: ['./markdown-editor.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EditorComponent),
+      useExisting: forwardRef(() => MarkdownEditorComponent),
       multi: true
     }
   ]
 })
-export class EditorComponent implements ControlValueAccessor {
+export class MarkdownEditorComponent implements ControlValueAccessor {
 
   @ViewChild('input') input: ElementRef;
 

@@ -1,40 +1,72 @@
 .markdown-editor {
+  border: 1px solid #ccc;
+  padding: 10px;
 
-  .editor-toolbar {
+  .tab {
+    color: #24292e;
+    background: #fafbfc;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+  }
+
+  .markdown-header {
     display: flex;
-    border-top: 1px solid #ccc;
-    padding: 4px 0;
+    justify-content: space-between;
 
-    .toolbar-icon {
-      color: rgba(0, 0, 0, 0.7);
-      font-size: 24px;
-      line-height: 22px;
-      text-decoration: none;
-      padding: 2px 6px;
+    .tabs {
+      margin-bottom: -1px;
 
-      .sd-italic {
-        font-size: 17px;
-        vertical-align: -1px;
+      button {
+        border-color: #d1d5da;
+        border-radius: 3px 3px 0 0;
+        color: #24292e;
+        border: 1px solid #d1d5da;
+        border-bottom: 0;
+        display: inline-block;
+        font-size: 15px;
+        line-height: 20px;
+        padding: 8px 12px;
       }
+    }
 
-      .sd-link-1 {
-        font-size: 20px;
-        vertical-align: -3px;
-      }
+    .markdown-toolbar {
+      display: flex;
+      padding: 4px 0;
 
-      .sd-code {
-        font-size: 20px;
-        vertical-align: -2px;
-      }
+      .toolbar-button {
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 24px;
+        line-height: 22px;
+        text-decoration: none;
+        padding: 2px 6px;
+        border: none;
+        background: none;
+        cursor: pointer;
 
-      &:hover {
-        color: black;
-        background: rgba(var(--palette-neutral-8, 234, 234, 234), 1);
+        .sd-italic {
+          font-size: 17px;
+          vertical-align: -1px;
+        }
+
+        .sd-link-1 {
+          font-size: 20px;
+          vertical-align: -3px;
+        }
+
+        .sd-code {
+          font-size: 20px;
+          vertical-align: -2px;
+        }
+
+        &:hover {
+          color: black;
+          background: rgba(var(--palette-neutral-8, 234, 234, 234), 1);
+        }
       }
     }
   }
 
-  .editor-body {
+  .markdown-body {
     textarea {
       width: 100%;
       height: 600px;

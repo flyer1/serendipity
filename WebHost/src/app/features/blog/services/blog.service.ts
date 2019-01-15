@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { ApiService } from 'src/app/core/data/api.service';
 import { BlogPosts } from '../models/blog-posts.model';
@@ -11,7 +12,7 @@ import { BlogPostSummary } from '../models/blog-post-summary.model';
 
 @Injectable({ providedIn: 'root' })
 export class BlogService {
-  constructor(private apiService: ApiService, private markdownService: MarkdownService) { }
+  constructor(private apiService: ApiService, private markdownService: MarkdownService, private sanitizer: DomSanitizer) { }
 
   getAll(): Observable<BlogPosts> {
     return this.apiService.getJson('./assets/data/blog-posts.json')
@@ -19,7 +20,7 @@ export class BlogService {
   }
 
   resolveGetAll(data: any): BlogPosts {
-    const blogPosts = new BlogPosts(data, this.markdownService);
+    const blogPosts = new BlogPosts(data, this.markdownService, this.sanitizer);
     blogPosts.results.sort((a, b) => compare(a.date, b.date, false));
     return blogPosts;
   }
@@ -36,7 +37,7 @@ export class BlogService {
     const found = data.results.filter(item => item.id === id);
 
     if (found && found.length === 1) {
-      blogPost = new BlogPost(found[0], this.markdownService);
+      blogPost = new BlogPost(found[0], this.markdownService, this.sanitizer);
       const index = data.results.indexOf(found[0]);
       if (index > 0) {
         blogPost.previousPost = new BlogPostSummary(data.results[index - 1]);

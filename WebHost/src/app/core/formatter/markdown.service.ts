@@ -7,6 +7,7 @@ export class MarkdownService {
   constructor(private markdown: NgxMdService) {}
 
   compile(input: string): string {
-    return this.markdown.compile(input);
+    const sanitize = false;
+    return this.markdown.compile(input, sanitize);
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 
@@ -7,7 +9,6 @@ import { BlogPost } from '../models/blog-post.model';
 import { RoutingService } from 'src/app/core/routing/routing.service';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './blog-post.component.html',
@@ -19,10 +20,9 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   private form: FormGroup;
   post: BlogPost;
 
-  private get formFields() { return this.form.value; }
   get isNew() { return this.post.id === '-1'; }
 
-  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService, private sanitizer: DomSanitizer) {
     super();
   }
 
@@ -39,7 +39,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
       .pipe(takeUntil(this.destroy$), debounceTime(300))
       .subscribe(val => {
         this.post.content = val;
-        this.post.formattedContent = this.markdown.compile(val);
+        this.post.formattedContent = this.sanitizer.bypassSecurityTrustHtml(this.markdown.compile(val));
       });
   }
 
@@ -47,7 +47,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
     if (id === '-1') {
       const todayDate = new Date();
       const today = todayDate.getFullYear() + '-' + todayDate.getMonth() + 1 + '-' + todayDate.getDate();
-      this.post = new BlogPost({ id: id, title: 'New Blog Post', content: '', date: today }, this.markdown);
+      this.post = new BlogPost({ id: id, title: 'New Blog Post', content: '', date: today }, this.markdown, this.sanitizer);
       return;
     }
 

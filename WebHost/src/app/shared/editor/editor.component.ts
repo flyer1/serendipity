@@ -1,6 +1,5 @@
 import { Component, forwardRef, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { start } from 'repl';
 
 @Component({
   selector: 'app-editor',
@@ -81,6 +80,8 @@ export class EditorComponent implements ControlValueAccessor {
       case 'list-ordered':
         newValue += '\n1. ';
         break;
+      case 'you-tube':
+        newValue += '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/Ade4omJymiI?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true" style="border:0;" id="fitvid0"></iframe>';
     }
 
     this.writeValue(newValue);

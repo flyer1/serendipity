@@ -18,6 +18,7 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
   @ViewChild('input') input: ElementRef;
 
   value: string;
+  activeTab = 'WRITE';
 
   onChanged: any = () => { };
   onTouched: any = () => { };
@@ -85,6 +86,10 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
     }
 
     this.writeValue(newValue);
+  }
+
+  selectTab(tabName: string) {
+    this.activeTab = tabName;
   }
 
   @HostListener('keypress', ['$event']) onKeyDown(event: KeyboardEvent) {

@@ -62,5 +62,15 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   navigateToProfile() {
     this.router.gotoAbout();
   }
+
+  copyToClipboard() {
+    // TODO: Move code out of there.
+    const el = document.createElement('textarea');
+    el.value = this.post.formattedContent + '';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
 }
 

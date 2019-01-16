@@ -17,7 +17,7 @@
               <div [formGroup]="form">
                 <app-markdown-editor *ngIf="isNew" formControlName="content"></app-markdown-editor>
               </div>
-              <p [innerHtml]="post.formattedContent"></p>
+              <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>
             </div>
             <div class="share">
                 <label>Follow Accept Serendipity:</label>

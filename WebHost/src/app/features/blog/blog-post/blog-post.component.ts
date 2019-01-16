@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 
@@ -22,7 +21,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
 
   get isNew() { return this.post.id === '-1'; }
 
-  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService, private sanitizer: DomSanitizer) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
     super();
   }
 
@@ -39,7 +38,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
       .pipe(takeUntil(this.destroy$), debounceTime(300))
       .subscribe(val => {
         this.post.content = val;
-        this.post.formattedContent = this.sanitizer.bypassSecurityTrustHtml(this.markdown.compile(val));
+        this.post.formattedContent = this.markdown.compile(val);
       });
   }
 
@@ -47,7 +46,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
     if (id === '-1') {
       const todayDate = new Date();
       const today = todayDate.getFullYear() + '-' + todayDate.getMonth() + 1 + '-' + todayDate.getDate();
-      this.post = new BlogPost({ id: id, title: 'New Blog Post', content: '', date: today }, this.markdown, this.sanitizer);
+      this.post = new BlogPost({ id: id, title: 'New Blog Post', content: '', date: today }, this.markdown);
       return;
     }
 

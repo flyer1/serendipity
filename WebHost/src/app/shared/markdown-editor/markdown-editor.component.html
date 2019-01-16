@@ -1,9 +1,5 @@
 <div class="markdown-editor">
     <div class="markdown-header">
-        <div class="tabs" role="tablist">
-            <button role="tab" [class.is-active]="activeTab === 'WRITE'" (click)="selectTab('WRITE')">Write</button>
-            <button role="tab" [class.is-active]="activeTab === 'PREVIEW'" (click)="selectTab('PREVIEW')">Preview</button>
-        </div>
         <div class="markdown-toolbar">
             <button class="toolbar-button" (click)="toolbar('heading')"><i class="sd-letter"></i></button>
             <button class="toolbar-button" (click)="toolbar('bold')"><i class="sd-bold"></i></button>
@@ -14,8 +10,17 @@
             <button class="toolbar-button" (click)="toolbar('list-ordered')"><i class="sd-list-ordered"></i></button>
             <button class="toolbar-button" (click)="toolbar('you-tube')"><i class="sd-youtube"></i></button>
         </div>
+        <div class="tabs" role="tablist">
+            <button role="tab" [class.is-active]="activeTab === 'WRITE'" (click)="selectTab('WRITE')">Write</button>
+            <button role="tab" [class.is-active]="activeTab === 'PREVIEW'" (click)="selectTab('PREVIEW')">Preview</button>
+        </div>
     </div>
     <div class="markdown-body">
-        <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()" #input></textarea>
+        <div *ngIf="activeTab === 'WRITE'" class="write">
+            <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()" #input></textarea>
+        </div>
+        <div *ngIf="activeTab === 'PREVIEW'" class="preview">
+            <p [innerHtml]="htmlValue"></p>
+        </div>
     </div>
 </div>

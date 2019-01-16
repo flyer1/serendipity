@@ -1,5 +1,7 @@
 import { Component, forwardRef, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { MarkdownService } from 'src/app/core/formatter/markdown.service';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-markdown-editor',
@@ -18,10 +20,13 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
   @ViewChild('input') input: ElementRef;
 
   value: string;
-  activeTab = 'WRITE';
+  htmlValue: SafeHtml;
+  activeTab: 'WRITE' | 'PREVIEW' = 'WRITE';
 
   onChanged: any = () => { };
   onTouched: any = () => { };
+
+  constructor(private markdown: MarkdownService) {}
 
   // #region ControlValueAccessor Implementation
 
@@ -88,8 +93,12 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
     this.writeValue(newValue);
   }
 
-  selectTab(tabName: string) {
+  selectTab(tabName: 'WRITE' | 'PREVIEW') {
     this.activeTab = tabName;
+
+    if (tabName === 'PREVIEW') {
+      this.htmlValue = this.markdown.compile(this.value);
+    }
   }
 
   @HostListener('keypress', ['$event']) onKeyDown(event: KeyboardEvent) {

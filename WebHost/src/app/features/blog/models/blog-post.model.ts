@@ -1,4 +1,4 @@
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SafeHtml } from '@angular/platform-browser';
 
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 import { BlogPostSummary } from './blog-post-summary.model';
@@ -18,7 +18,7 @@ export class BlogPost {
   previousPost: BlogPostSummary;
   nextPost: BlogPostSummary;
 
-  constructor(data: any, markdown: MarkdownService, sanitizer: DomSanitizer) {
+  constructor(data: any, markdown: MarkdownService) {
     Object.assign(this, data);
 
     let preview = this.content;
@@ -32,7 +32,7 @@ export class BlogPost {
     // this.by = '******';
 
     if (markdown) {
-      this.formattedContent = sanitizer.bypassSecurityTrustHtml(markdown.compile(this.content));
+      this.formattedContent = markdown.compile(this.content);
     }
   }
 }

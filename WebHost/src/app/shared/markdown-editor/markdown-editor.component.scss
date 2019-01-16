@@ -1,6 +1,5 @@
 .markdown-editor {
   border: 1px solid #ccc;
-  padding-top: 10px;
 
   .tab {
     color: #24292e;
@@ -9,27 +8,28 @@
   }
 
   .markdown-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #d1d5da;
-    padding-left: 20px;
-    padding-right: 10px;
+    border-bottom: 1px solid #c3c6c9;
+    padding-left: 10px;
+    padding-top: 10px;
+    background: #f0f0f0;
 
     .tabs {
       margin-bottom: -1px;
 
       button {
+        display: inline-block;
         border: 1px solid transparent;
         border-radius: 3px 3px 0 0;
         color: #24292e;
         border-bottom: 0;
-        display: inline-block;
         font-size: 15px;
         line-height: 20px;
         padding: 8px 12px;
+        outline: none;
 
         &.is-active {
-          border-color: #d1d5da;
+          border-color: #c3c6c9;
+          background: #f6f6f6;
         }
       }
     }
@@ -37,6 +37,8 @@
     .markdown-toolbar {
       display: flex;
       padding: 4px 0;
+      float: right;
+      margin-right: 17px;
 
       .toolbar-button {
         color: rgba(0, 0, 0, 0.7);

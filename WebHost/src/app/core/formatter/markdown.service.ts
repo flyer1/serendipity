@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { NgxMdService } from 'ngx-md';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable({ providedIn: 'root' })
 export class MarkdownService {
 
-  constructor(private markdown: NgxMdService) {}
+  constructor(private markdown: NgxMdService, private sanitizer: DomSanitizer) {}
 
-  compile(input: string): string {
+  compile(input: string): SafeHtml {
     const sanitize = false;
-    return this.markdown.compile(input, sanitize);
+    const compiledInput = this.markdown.compile(input, sanitize);
+    const safeHtml = this.sanitizer.bypassSecurityTrustHtml(compiledInput);
+    return safeHtml;
   }
 }

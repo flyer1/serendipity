@@ -26,7 +26,7 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
   onChanged: any = () => { };
   onTouched: any = () => { };
 
-  constructor(private markdown: MarkdownService) {}
+  constructor(private markdown: MarkdownService) { }
 
   // #region ControlValueAccessor Implementation
 
@@ -52,7 +52,11 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
   // #endregion
 
   inputChanged(event) {
-    this.value = event.target.value;
+    let value = event.target.value;
+    if (event.inputType === 'insertFromPaste') {
+      value = value.replace(/\\n/g, '\n');
+    }
+    this.value = value;
     this.onChanged(this.value);
   }
 
@@ -95,8 +99,11 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
 
   selectTab(tabName: 'WRITE' | 'PREVIEW') {
     this.activeTab = tabName;
+    this.updateHtml();
+  }
 
-    if (tabName === 'PREVIEW') {
+  updateHtml() {
+    if (this.activeTab === 'PREVIEW') {
       this.htmlValue = this.markdown.compile(this.value);
     }
   }
@@ -104,6 +111,7 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
   @HostListener('keypress', ['$event']) onKeyDown(event: KeyboardEvent) {
 
     if (!event.ctrlKey) { return; }
+    if (this.activeTab !== 'WRITE') { return; }
 
     let handled = true;
 

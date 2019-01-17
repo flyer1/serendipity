@@ -14,10 +14,10 @@
                 </div>
             </div>
             <div class="body">
-                <div [formGroup]="form">
-                    <app-markdown-editor *ngIf="isNew" formControlName="content"></app-markdown-editor>
+                <div *ngIf="isNew" [formGroup]="form">
+                    <app-markdown-editor formControlName="content"></app-markdown-editor>
                     <div class="form-buttons">
-                        <a class="button" (click)="copyToClipboard()">Copy to Clipboard</a>
+                        <a class="button" (click)="copy()">Copy to Clipboard</a>
                     </div>
                 </div>
                 <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>

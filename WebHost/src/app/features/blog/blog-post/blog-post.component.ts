@@ -8,6 +8,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { RoutingService } from 'src/app/core/routing/routing.service';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
+import { copyToClipboard } from 'src/app/core/helpers/common-helpers';
 
 @Component({
   templateUrl: './blog-post.component.html',
@@ -63,14 +64,8 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
     this.router.gotoAbout();
   }
 
-  copyToClipboard() {
-    // TODO: Move code out of there.
-    const el = document.createElement('textarea');
-    el.value = this.post.formattedContent + '';
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+  copy() {
+    copyToClipboard(this.post.content.replace(/\n/g, '\\n'));
   }
 }
 

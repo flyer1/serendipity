@@ -20,6 +20,7 @@
             <textarea (input)="inputChanged($event)" [value]="value" (blur)="onBlur()" #input></textarea>
         </div>
         <div *ngIf="activeTab === 'PREVIEW'" class="preview">
+          <p *ngIf="!value" class="no-data">Nothing to preview</p>
             <p [innerHtml]="htmlValue"></p>
         </div>
     </div>

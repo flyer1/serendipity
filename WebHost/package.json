@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-no-reload": "ng serve --port 4400 --live-reload false -o",
+    "start-no-reload": "ng serve --port 4500 --live-reload false -o",
     "build": "ng build",
     "build-prod": "ng build --prod --aot",
     "test": "ng test",

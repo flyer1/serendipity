@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, debounceTime } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { RoutingService } from 'src/app/core/routing/routing.service';
 import { ComponentBase } from 'src/app/core/component/component-base';
 import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 import { copyToClipboard } from 'src/app/core/helpers/common-helpers';
+import { ViewportService } from 'src/app/core/browser/viewport.service';
+import { DomService } from 'src/app/core/browser/dom.service';
 
 @Component({
   templateUrl: './blog-post.component.html',
@@ -21,47 +23,45 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
   private form: FormGroup;
   post: BlogPost;
   threshold: number;
-  img: HTMLElement;
+  img: HTMLImageElement;
 
+  @ViewChild('blogPost') blogPost: ElementRef;
   get isNew() { return this.post.id === '-1'; }
 
-  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute, private router: RoutingService, private markdown: MarkdownService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute,
+    private router: RoutingService, private markdown: MarkdownService,
+    private viewportService: ViewportService, private renderer: Renderer2, private domService: DomService) {
     super();
   }
 
   ngOnInit() {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(parms => this.getData(parms.id));
+    this.router.navigationEnd$.pipe(takeUntil(this.destroy$)).subscribe(_ => this.onNavigationEnd());
     this.initForm();
   }
 
-  // TODO: The blur effect is very WIP - clean up.
   ngAfterViewInit() {
-    setTimeout(this.setThreshold.bind(this), 10);
     fromEvent(document, 'scroll')
       .pipe(debounceTime(30), takeUntil(this.destroy$))
       .subscribe(_ => this.onScroll());
   }
 
-  setThreshold() {
-    this.img = document.querySelector('.blog-post .body img');
+  onNavigationEnd() {
+    // Give the data binding a chance to render the blog content before we reset.
+    setTimeout(_ => this.reset(), 500);
   }
 
   onScroll() {
-    if (!this.img) { return; }
-
-    const isInViewport = this.isElementInViewport(this.img);
-    console.log({ scrollY: window.scrollY, isInViewport: isInViewport });
-    if (isInViewport) {
-      this.img.classList.add('in-viewport');
+    if (!this.img) {
+      // Note: We don't have access to the blog post content like we normally would. So we can't use a #localVar on the view and reference it via @ViewChild().
+      this.img = this.domService.querySelector(this.blogPost.nativeElement, '.body img') as HTMLImageElement;
+      if (!this.img) { return; }
     }
-  }
 
-  isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.bottom - (rect.height * 0.5) <= (window.innerHeight || document.documentElement.clientHeight)
-    );
+    const inViewport = this.viewportService.inViewport(this.img, 0.5);
+    if (inViewport) {
+      this.renderer.addClass(this.img, 'in-viewport');
+    }
   }
 
   initForm() {
@@ -74,6 +74,10 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
         this.post.content = val;
         this.post.formattedContent = this.markdown.compile(val);
       });
+  }
+
+  reset() {
+    this.img = null;
   }
 
   getData(id: string) {

@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { Subject, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -12,12 +12,14 @@ export class RoutingService {
   private routeDataSubject$ = new ReplaySubject<any>(1);
   private pageTitleSubject$ = new ReplaySubject<string>(1);
   private activeFeatureSubject$ = new ReplaySubject<string>();
+  private navigationEndSubject$ = new ReplaySubject<void>();
   private pageTitleSuffix: string;
   private destroy$ = new Subject();
 
   pageTitle$ = this.pageTitleSubject$.asObservable();
   routeData$ = this.routeDataSubject$.asObservable();
   activeFeature$ = this.activeFeatureSubject$.asObservable();
+  navigationEnd$ = this.navigationEndSubject$.asObservable();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private location: Location, private title: Title, private meta: Meta) { }
 
@@ -90,6 +92,7 @@ export class RoutingService {
       this.setTitle(title);
       this.setDescription(description);
       this.routeDataSubject$.next({url: event.url, data: data });
+      this.navigationEndSubject$.next();
     });
 
   }

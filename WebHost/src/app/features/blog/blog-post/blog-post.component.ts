@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, debounceTime } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
 
 import { BlogService } from '../services/blog.service';
 import { BlogPost } from '../models/blog-post.model';
@@ -15,10 +16,12 @@ import { copyToClipboard } from 'src/app/core/helpers/common-helpers';
   styleUrls: ['./blog-post.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class BlogPostComponent extends ComponentBase implements OnInit {
+export class BlogPostComponent extends ComponentBase implements OnInit, AfterViewInit {
 
   private form: FormGroup;
   post: BlogPost;
+  threshold: number;
+  img: HTMLElement;
 
   get isNew() { return this.post.id === '-1'; }
 
@@ -29,6 +32,36 @@ export class BlogPostComponent extends ComponentBase implements OnInit {
   ngOnInit() {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(parms => this.getData(parms.id));
     this.initForm();
+  }
+
+  // TODO: The blur effect is very WIP - clean up.
+  ngAfterViewInit() {
+    setTimeout(this.setThreshold.bind(this), 10);
+    fromEvent(document, 'scroll')
+      .pipe(debounceTime(30), takeUntil(this.destroy$))
+      .subscribe(_ => this.onScroll());
+  }
+
+  setThreshold() {
+    this.img = document.querySelector('.blog-post .body img');
+  }
+
+  onScroll() {
+    if (!this.img) { return; }
+
+    const isInViewport = this.isElementInViewport(this.img);
+    console.log({ scrollY: window.scrollY, isInViewport: isInViewport });
+    if (isInViewport) {
+      this.img.classList.add('in-viewport');
+    }
+  }
+
+  isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.bottom - (rect.height * 0.5) <= (window.innerHeight || document.documentElement.clientHeight)
+    );
   }
 
   initForm() {

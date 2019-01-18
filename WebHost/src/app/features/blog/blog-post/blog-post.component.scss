@@ -71,6 +71,14 @@
       img {
         width: 100%;
         height: auto;
+        filter: blur(5px);
+        transform: translateY(10px) scale(0.99);
+        transition: filter .3s ease, transform .6s ease;
+
+        &.in-viewport {
+          filter: none;
+          transform: none;
+        }
       }
     }
   }

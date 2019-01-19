@@ -72,13 +72,19 @@
         width: 100%;
         height: auto;
         filter: blur(5px);
+        opacity: 0.5;
         transform: translateY(10px) scale(0.99);
-        transition: filter .3s ease, transform .6s ease;
+        transition: filter .6s ease, transform 1s ease, opacity 0.5s ease;
 
         &.in-viewport {
           filter: none;
           transform: none;
+          opacity: 1;
         }
+      }
+
+      .youtube-player {
+        width: 100%;
       }
     }
   }

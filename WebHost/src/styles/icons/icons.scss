@@ -11,6 +11,7 @@
   font-style: normal;
 }
 
+
 [data-icon]:before {
   font-family: "serendipity" !important;
   content: attr(data-icon);
@@ -225,4 +226,10 @@
 }
 .sd-youtube-square:before {
   content: "\21";
+}
+.sd-quote:before {
+  content: "\22";
+}
+.sd-quote-1:before {
+  content: "\23";
 }

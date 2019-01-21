@@ -42,7 +42,7 @@
 
       .toolbar-button {
         color: rgba(0, 0, 0, 0.7);
-        font-size: 24px;
+        font-size: 20px;
         line-height: 22px;
         text-decoration: none;
         padding: 2px 6px;
@@ -56,19 +56,23 @@
         }
 
         .sd-link-1 {
-          font-size: 20px;
-          vertical-align: -3px;
+          font-size: 18px;
+          vertical-align: -1px;
         }
 
         .sd-code {
-          font-size: 20px;
-          vertical-align: -2px;
+          font-size: 18px;
+          vertical-align: 1px;
         }
 
         &:hover {
           color: black;
           background: rgba(var(--palette-neutral-8, 234, 234, 234), 1);
         }
+      }
+
+      .spacer {
+        margin: 0 4px;
       }
     }
   }
@@ -78,11 +82,12 @@
 
     .write {
       textarea {
-        width: 100%;
+        width: 98%;
         height: 600px;
         resize: vertical;
         border-radius: 3px;
         background: #fafbfc;
+        padding: 8px;
       }
     }
 

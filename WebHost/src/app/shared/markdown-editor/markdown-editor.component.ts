@@ -79,6 +79,9 @@ export class MarkdownEditorComponent implements ControlValueAccessor {
       case 'italic':
         newValue = newValue.substr(0, selection.start) + '_' + selectedValue + '_' + newValue.substr(selection.end);
         break;
+      case 'quote':
+        newValue = newValue.substr(0, selection.start) + '\n> ' + newValue.substr(selection.end);
+      break;
       case 'link':
         newValue = newValue.substr(0, selection.start) + '![](PASTE_URL_HERE)' + newValue.substr(selection.end);
         break;

@@ -1,0 +1,42 @@
+
+.close-button {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: 4px;
+	top: 50%;
+	overflow: hidden;
+	text-indent: 100%;
+	cursor: pointer;
+  backface-visibility: hidden;
+  transform: translateY(-50%);
+}
+
+.close-button:hover,
+.close-button:focus {
+	outline: none;
+}
+
+.close-button::before,
+.close-button::after {
+	content: '';
+	position: absolute;
+	width: 3px;
+	height: 60%;
+	top: 50%;
+	left: 50%;
+	background: #aaa;
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+	background: #fff;
+}
+
+.close-button::before {
+	transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.close-button::after {
+	transform: translate(-50%,-50%) rotate(-45deg);
+}

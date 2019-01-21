@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { NotificationMessageComponent } from './messaging/notification-message.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -11,9 +13,12 @@ import { RouterModule } from '@angular/router';
     exports: [
         CommonModule,
         RouterModule,
-        HttpClientModule
+        HttpClientModule,
+        NotificationMessageComponent
     ],
-    declarations: [],
+    declarations: [
+      NotificationMessageComponent
+    ],
     providers: [],
 })
 export class CoreModule { }

@@ -4,14 +4,15 @@
 // CORE
 @import "./styles/core/general";
 
+// BUTTONS
+@import "./styles/buttons/button";
+@import "./styles/buttons/close-button";
+
 // ICONS
 @import "./styles/icons/icons";
 
 // FONTS
 @import "./styles/fonts/fonts";
-
-// FORM
-@import "./styles/form/button";
 
 // LAYOUT
 @import "./styles/layout/page";

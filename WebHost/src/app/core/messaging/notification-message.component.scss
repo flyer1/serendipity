@@ -1,0 +1,81 @@
+.notification-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 22px;
+  box-shadow: inset 4.5em 0 rgba(0, 0, 0, 0.6);
+  background: rgba(42, 45, 50, 0.85);
+  font-size: 90%;
+  line-height: 1.4;
+  color: rgba(250, 251, 255, 0.95);
+  font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+  z-index: 1000;
+
+  p {
+    display: inline-block;
+    padding: 0 3.2em;
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .icon {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 13px;
+    font-size: 32px;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .close-button {
+    right: 60px;
+  }
+
+  &.show {
+    animation-name: animSlideTop;
+    animation-duration: 0.3s;
+
+    .icon,
+    p {
+      animation-name: animScaleUp;
+      animation-duration: 0.3s;
+      animation-delay: 0.2s;
+      animation-fill-mode: both;
+    }
+
+    p {
+      animation-name: animFade;
+    }
+  }
+
+  &.hide {
+    animation-name: animSlideTop;
+    animation-duration: 0.3s;
+
+    animation-direction: reverse;
+  }
+}
+
+@keyframes animScaleUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50%, 0) scale3d(0, 0, 1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes animFade {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+
+@keyframes animSlideTop {
+	0% { transform: translate3d(0,-100%,0); }
+	100% { transform: translate3d(0,0,0); }
+}

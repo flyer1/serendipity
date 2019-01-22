@@ -1,4 +1,4 @@
-.notification-message {
+.notifier {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,8 +51,8 @@
 
   &.hide {
     animation-name: animSlideTop;
+    animation-fill-mode: both;
     animation-duration: 0.3s;
-
     animation-direction: reverse;
   }
 }

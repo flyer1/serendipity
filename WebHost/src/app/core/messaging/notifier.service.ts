@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class NotificationMessageService {
+export class NotifierService {
 
   messageQueue: string[];
 

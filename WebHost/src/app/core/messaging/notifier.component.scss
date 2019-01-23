@@ -33,7 +33,7 @@
   }
 
   &.show {
-    animation-name: animSlideTop;
+    animation-name: notifierSlideTopAnim;
     animation-duration: 0.3s;
 
     .icon,
@@ -50,10 +50,19 @@
   }
 
   &.hide {
-    animation-name: animSlideTop;
-    animation-fill-mode: both;
+    animation-name: notifierSlideTopAnim;
     animation-duration: 0.3s;
     animation-direction: reverse;
+  }
+}
+
+@keyframes notifierSlideTopAnim {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -70,12 +79,11 @@
 }
 
 @keyframes animFade {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
-}
+  0% {
+    opacity: 0;
+  }
 
-
-@keyframes animSlideTop {
-	0% { transform: translate3d(0,-100%,0); }
-	100% { transform: translate3d(0,0,0); }
+  100% {
+    opacity: 1;
+  }
 }

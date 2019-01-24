@@ -17,7 +17,7 @@
                 <div *ngIf="isNew" [formGroup]="form">
                     <app-markdown-editor formControlName="content"></app-markdown-editor>
                     <div class="form-buttons">
-                        <a class="button" (click)="copy()">Copy to Clipboard</a>
+                        <button class="button" (click)="copy()">Copy to Clipboard</button>
                     </div>
                 </div>
                 <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>

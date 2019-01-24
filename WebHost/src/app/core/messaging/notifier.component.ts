@@ -29,7 +29,7 @@ export class NotifierComponent extends ComponentBase implements OnInit {
 
   message: string;
   isEnabled = false;
-  timeoutHandler: NodeJS.Timer;
+  timeoutHandler: any;
 
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private notifierService: NotifierService) {
     super();

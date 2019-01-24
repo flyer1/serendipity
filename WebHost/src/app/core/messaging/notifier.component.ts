@@ -1,4 +1,12 @@
-import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+
+import { NotifierService } from './notifier.service';
+import { ComponentBase } from '../component/component-base';
+import { NotifierModel } from './notifier.model';
+
+// How long to display the message before it automatically closes
+const MESSAGE_TIMEOUT = 6000;
 
 /**
  * Render a notification bar with some animations.
@@ -15,19 +23,27 @@ import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, ChangeDetec
   templateUrl: './notifier.component.html',
   styleUrls: ['./notifier.component.scss'],
 })
-export class NotifierComponent implements AfterViewInit {
+export class NotifierComponent extends ComponentBase implements OnInit {
 
   @ViewChild('notifier') notifier: ElementRef;
 
-  isEnabled = true;
+  message: string;
+  isEnabled = false;
+  timeoutHandler: NodeJS.Timer;
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
-
-  ngAfterViewInit() {
-    this.show();
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private notifierService: NotifierService) {
+    super();
   }
 
-  show() {
+  ngOnInit() {
+    this.notifierService.messageStream$.pipe(takeUntil(this.destroy$)).subscribe((data: NotifierModel) => this.show(data));
+  }
+
+  show(data: NotifierModel) {
+
+    // As we are rendering a message, pause any incoming messages
+    this.notifierService.pause();
+    this.message = data.message;
     this.isEnabled = true;
 
     // Let angular do it's binding business before we process the show not using the angular animation framework.
@@ -35,9 +51,13 @@ export class NotifierComponent implements AfterViewInit {
     this.cdr.detectChanges();
 
     this.renderer.addClass(this.notifier.nativeElement, 'show');
+
+    this.timeoutHandler = setTimeout(_ => this.close(), MESSAGE_TIMEOUT);
   }
 
   close() {
+    clearTimeout(this.timeoutHandler);
+
     this.renderer.removeClass(this.notifier.nativeElement, 'show');
 
     setTimeout(_ => {
@@ -52,7 +72,7 @@ export class NotifierComponent implements AfterViewInit {
     // Now that the hide animation has completed, toggle the flag that "removes" the template from the DOM
     this.isEnabled = false;
 
-    // For now, just show it again after a second.
-    setTimeout(this.show.bind(this), 1000);
+    // Tell the notifier that it's now okay to send any new messages our way
+    this.notifierService.resume();
   }
 }

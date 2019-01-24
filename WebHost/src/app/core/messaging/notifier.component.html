@@ -1,7 +1,7 @@
 <div *ngIf="isEnabled" class="notifier" #notifier>
     <div class="box-inner">
         <span class="icon sd-megaphone-1"></span>
-        <p>This is a test of the app broadcasting channel.</p>
+        <p>{{message}}</p>
     </div>
     <span class="close-button" (click)="close()"></span>
 </div>

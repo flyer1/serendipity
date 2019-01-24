@@ -12,6 +12,7 @@ import { MarkdownService } from 'src/app/core/formatter/markdown.service';
 import { copyToClipboard } from 'src/app/core/helpers/common-helpers';
 import { ViewportService } from 'src/app/core/browser/viewport.service';
 import { DomService } from 'src/app/core/browser/dom.service';
+import { NotifierService } from 'src/app/core/messaging/notifier.service';
 
 @Component({
   templateUrl: './blog-post.component.html',
@@ -29,7 +30,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
   get isNew() { return this.post.id === '-1'; }
 
   constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute,
-    private router: RoutingService, private markdown: MarkdownService,
+    private router: RoutingService, private markdown: MarkdownService, private notifierService: NotifierService,
     private viewportService: ViewportService, private renderer: Renderer2, private domService: DomService) {
     super();
   }
@@ -102,7 +103,10 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
   }
 
   copy() {
-    copyToClipboard(this.post.content.replace(/\n/g, '\\n'));
+    const content = this.post.content.replace(/\n/g, '\\n');
+    copyToClipboard(content);
+
+    this.notifierService.queueMessage(content);
   }
 }
 

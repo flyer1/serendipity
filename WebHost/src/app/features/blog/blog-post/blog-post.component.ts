@@ -106,7 +106,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
     const content = this.post.content.replace(/\n/g, '\\n');
     copyToClipboard(content);
 
-    this.notifierService.queueMessage(content);
+    this.notifierService.queueMessage('Contents have been copied to the clipboard.');
   }
 }
 

@@ -88,6 +88,27 @@
         min-height: 400px;
       }
     }
+
+    blockquote {
+      position: relative;
+      color: #333;
+      margin: 60px 40px;
+
+      p {
+        font-family: 'Helvetica';
+        font-size: 26px;
+        font-style: italic;
+
+        &:after {
+          content: '';
+          border-right: 5px solid #7da9db;
+          position: absolute;
+          left: -40px;
+          top: -1em;
+          bottom: -1em;
+        }
+      }
+    }
   }
 
   .share {

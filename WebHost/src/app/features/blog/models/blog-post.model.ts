@@ -23,8 +23,14 @@ export class BlogPost {
 
     let preview = this.content;
     // Remove references to images
-    const regex = /\!\[.*\]\(.*\)/gi;
+    let regex = /\!\[.*\]\(.*\)/gi;
     preview = preview.replace(regex, '');
+    // Remove select tags
+    regex = /\<small\>|\<\/small\>/gi;
+    preview = preview.replace(regex, '');
+    regex = /\>/gi;
+    preview = preview.replace(regex, '');
+
     this.preview = preview.substr(0, 500);
 
     if (this.content.length > 500) { this.preview += '...'; }

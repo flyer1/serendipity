@@ -28,6 +28,7 @@ export class BlogPostComponent extends ComponentBase implements OnInit, AfterVie
 
   @ViewChild('blogPost') blogPost: ElementRef;
   get isNew() { return this.post.id === '-1'; }
+  get facebookShare() { return 'https://www.facebook.com/sharer.php?' + encodeURI(window.location.href); }
 
   constructor(private fb: FormBuilder, private blogService: BlogService, private route: ActivatedRoute,
     private router: RoutingService, private markdown: MarkdownService, private notifierService: NotifierService,

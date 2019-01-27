@@ -23,9 +23,9 @@
                 <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>
             </div>
             <div class="share">
-                <label>Follow Accept Serendipity:</label>
-                <a class="facebook" href="https://www.facebook.com/AcceptSerendipity" target="_blank"><i class="sd-facebook-squared"></i></a>
-                <a class="twitter" href="https://www.twitter.com/AcceptSerendipity" target="_blank"><i class="sd-twitter"></i></a>
+                <label>Share this post:</label>
+                <a class="facebook" rel="nofollow noopener" [href]="facebookShare" target="_blank"><i class="sd-facebook-squared"></i></a>
+                <a class="twitter" rel="nofollow noopener" href="https://www.twitter.com/AcceptSerendipity" target="_blank"><i class="sd-twitter"></i></a>
             </div>
         </div>
 

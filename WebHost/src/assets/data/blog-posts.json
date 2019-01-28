@@ -2,12 +2,7 @@
     "pageIndex": 0,
     "totalRows": 3,
     "totalPages": 1,
-    "results": [{
-            "id": "2018-01-01.1",
-            "title": "jon",
-            "date": "2018-01-02",
-            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum mollitia corporis quia nostrum incidunt hic velit ea, necessitatibus omnis explicabo totam impedit et deserunt reprehenderit vitae eligendi repellendus numquam dicta? Nisi id, cumque minus recusandae fuga nihil voluptatibus placeat ipsam aliquid perferendis aperiam? Dolores odio accusantium blanditiis fugit, sint delectus!"
-        },
+    "results": [
         {
             "id": "2018-11-18",
             "title": "Thankful",
@@ -31,6 +26,12 @@
           "title": "Letting Go",
           "date": "2019-01-25",
           "content": "Have you ever thought about what you need to give up, to  truly finding something new in your life.  \n\nWhat limiting beliefs or comfortable patterns can you recognize in yourself, and maybe one day choose to leave in the past?\n\n> \"What could we accomplish if we knew we could not fail?\" <small>- Eleanor Roosevelt</small>.\n\n ![](/assets/images/posts/2019-01-25/clear-lake-bridge.jpg) \n\n"
+        },
+        {
+          "id": "2019-01-27",
+          "title": "New Roots",
+          "date": "2019-01-27",
+          "content": "Looking for something I didn't know I needed. Is like a light bulb turning on in a dark room and poof there it is, what I needed to awaken change. \n\nSometimes the new understanding, uproots some strong beliefs, and sends me down a new path to finding new possibilities. The roots now looking for a new plot of healthy soil, to re-root and explore there new environment. \n\n![](/assets/images/posts/2019-01-27/tree_roots.jpg)\n\nThe new belief is the root expanding, and stretching for new meanings, connections, and experiences, in it's new context. I'm filled with curiosity and exuberance to build a new and healthier way of looking at my life."
         }
     ]
 }

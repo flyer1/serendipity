@@ -74,7 +74,7 @@
         filter: blur(5px);
         opacity: 0.5;
         transform: translateY(10px) scale(0.99);
-        transition: filter .6s ease, transform 1s ease, opacity 0.5s ease;
+        transition: filter .8s ease, transform 0.5s ease, opacity 0.9s ease;
 
         &.in-viewport {
           filter: none;

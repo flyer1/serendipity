@@ -31,7 +31,7 @@ export class BlogPost {
     regex = /\>/gi;
     preview = preview.replace(regex, '');
 
-    this.preview = preview.substr(0, 500);
+    this.preview = preview.substr(0, 400);
 
     if (this.content.length > 500) { this.preview += '...'; }
 

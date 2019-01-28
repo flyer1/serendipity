@@ -6,7 +6,9 @@
         <li *ngFor="let post of recentPosts">
             <a (click)="navigate(post.id)" [class.is-active]="post.id === currentId" appLink>
                 <i class="icon sd-chevron-right" aria-hidden="true"></i>
-                <span>{{post.title}}</span>
+                <span class="title">{{post.title}}</span>
+                <span *ngIf="post.age === 0" class="age">(today)</span>
+                <span *ngIf="post.age > 0" class="age">({{post.age}}d)</span>
             </a>
         </li>
     </ul>

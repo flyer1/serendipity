@@ -23,6 +23,14 @@
           vertical-align: -1px;
         }
 
+        .title {}
+
+        .age {
+          margin-left: 8px;
+          font-size: 13px;
+          color: #9eaab1;
+        }
+
         &.is-active {
           font-weight: bold;
         }

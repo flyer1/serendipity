@@ -7,6 +7,7 @@
     "start-no-reload": "ng serve --port 4500 --live-reload false -o",
     "build": "ng build",
     "build-prod": "ng build --prod --aot",
+    "build-prod-debug": "ng build --prod --build-optimizer=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

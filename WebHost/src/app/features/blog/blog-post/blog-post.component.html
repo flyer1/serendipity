@@ -9,7 +9,7 @@
                   </a>
                     <div class="post-info">
                         <a class="who" (click)="navigateToProfile()" appLink>Accept Serendipity</a>
-                        <div class="when">{{post.date}}</div>
+                        <div class="when">{{post.date | date: 'fullDate' }}</div>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-info">
                         <div class="post-name">{{post.previousPost.title}}</div>
-                        <div class="post-date">{{post.previousPost.date}}</div>
+                        <div class="post-date">{{post.previousPost.date | date: 'MMM d, yyyy'}}</div>
                     </div>
                 </a>
             </div>
@@ -45,7 +45,7 @@
                 <a *ngIf="post.nextPost" class="blog-nav-item next-post" (click)="navigate(post.nextPost.id)">
                     <div class="col-info">
                         <div class="post-name">{{post.nextPost.title}}</div>
-                        <div class="post-date">{{post.nextPost.date}}</div>
+                        <div class="post-date">{{post.nextPost.date | date: 'MMM d, yyyy'}}</div>
                     </div>
                     <div class="col-icon">
                         <i class="icon sd-chevron-right" aria-hidden="true"></i>

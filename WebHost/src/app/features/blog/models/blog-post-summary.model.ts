@@ -1,4 +1,4 @@
-import { dateDiffInDays, stringToDate } from 'src/app/core/helpers/date-helper';
+import { differenceInDays } from 'date-fns';
 
 export class BlogPostSummary {
   id: string;
@@ -10,6 +10,6 @@ export class BlogPostSummary {
   constructor(data: any) {
     [this.id, this.title, this.date] = [data.id, data.title, data.date];
 
-    this.age = dateDiffInDays(stringToDate(this.date), new Date());
+    this.age = differenceInDays(new Date(), this.date);
   }
 }

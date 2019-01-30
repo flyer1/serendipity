@@ -10,7 +10,8 @@
     "build-prod-debug": "ng build --prod --build-optimizer=false",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "bundle-analyzer": "ng build --prod --aot --stats-json & webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "date-fns": "^1.30.1",
     "ngx-md": "^7.0.0",
     "normalize.css": "^8.0.0",
     "rxjs": "~6.3.3",
@@ -50,6 +52,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

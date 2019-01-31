@@ -9,7 +9,9 @@
                     </div>
                 </div>
                 <div class="body">
-                    <p class="summary">{{post.preview}}</p>
+                  <div class="summary">
+                    <div class="blog-content" [innerHtml]="post.formattedContent"></div>
+                  </div>
                 </div>
 
                 <div class="actions">

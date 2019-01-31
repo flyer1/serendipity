@@ -47,7 +47,33 @@
 
     .body {
       .summary {
-        line-height: 1.5em;
+        position: relative;
+        max-height: 250px;
+        overflow: hidden;
+        margin-bottom: 10px;
+
+        .blog-content {
+
+          p {
+            line-height: 27px;
+            font-size: 19px;
+          }
+
+          img {
+            display: none;
+          }
+
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          right: 0;
+          height: 100px;
+          background-image: linear-gradient(rgba(0, 0, 0, 0), white);
+        }
       }
     }
 

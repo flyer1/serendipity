@@ -14,13 +14,15 @@
                 </div>
             </div>
             <div class="body">
-                <div *ngIf="isNew" [formGroup]="form">
-                    <app-markdown-editor formControlName="content"></app-markdown-editor>
-                    <div class="form-buttons">
-                        <button class="button" (click)="copy()">Copy to Clipboard</button>
+                <div class="blog-content">
+                    <div *ngIf="isNew" [formGroup]="form">
+                        <app-markdown-editor formControlName="content"></app-markdown-editor>
+                        <div class="form-buttons">
+                            <button class="button" (click)="copy()">Copy to Clipboard</button>
+                        </div>
                     </div>
+                    <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>
                 </div>
-                <p *ngIf="!isNew" [innerHtml]="post.formattedContent"></p>
             </div>
             <div class="share">
                 <label>Share this post:</label>
